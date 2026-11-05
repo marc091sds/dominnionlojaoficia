@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Diagnóstico da loja</title>
+<style>
+:root{--bg:#0A0A0B;--card:#14151A;--ink:#F5F2EA;--sand:#C8B79A;--line:rgba(200,183,154,.3);--ok:#9bd3a6;--bad:#e59a9a;color-scheme:dark}
+@media(prefers-color-scheme:light){:root{--bg:#F5F2EA;--card:#fff;--ink:#14151A;--sand:#7a6742;--line:rgba(122,103,66,.35);--ok:#2e7d46;--bad:#b3261e;color-scheme:light}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif;padding:16px}
+main{max-width:720px;margin:0 auto}h1{font-size:24px;margin:8px 0}
+p{color:var(--ink);opacity:.8;margin-bottom:12px}
+.r{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.r b{display:block}.ok{color:var(--ok)}.bad{color:var(--bad)}
+code{font-size:12.5px;word-break:break-all;opacity:.85;display:block;margin-top:4px}
+button{min-height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--sand);background:var(--sand);color:#0A0A0B;font-weight:600;font-size:15px;cursor:pointer}
+#v{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+</style>
+</head>
+<body><main>
+<h1>Diagnóstico da loja</h1>
+<p>Esta página testa cada parte do site e mostra o resultado em português. Se algo estiver com problema, tire um print desta tela e mande para quem está ajudando.</p>
+<button id="go">Testar de novo</button>
+<div id="v" hidden></div>
+<div id="out"></div>
+<script>
+const T=[
+ ['Página da loja','/', 'pagina'],
+ ['Painel (admin.html)','/admin.html','pagina'],
+ ['Funções: configuração','/.netlify/functions/config','funcao'],
+ ['Funções: produtos','/.netlify/functions/produtos','funcao'],
+ ['Funções: pagamento','/.netlify/functions/pagamento','funcao'],
+ ['Funções: frete','/.netlify/functions/frete','funcao'],
+ ['Funções: painel (admin)','/.netlify/functions/admin','funcao'],
+ ['Funções: status do pedido','/.netlify/functions/status','funcao']];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+async function run(){
+ $('#out').innerHTML='Testando…';$('#v').hidden=true;let vivas=0,mortas=0,rows='',cfg=null;
+ for(const [nome,url,tipo] of T){
+  let st='—',tx='',json=null,ok=false;
+  try{const r=await fetch(url+(url.includes('?')?'&':'?')+'_='+Date.now(),{cache:'no-store'});st=r.status;tx=await r.text();try{json=JSON.parse(tx)}catch(e){}
+   if(tipo==='pagina')ok=r.ok&&/<html/i.test(tx);else ok=json!==null&&r.status<500;
+   if(url.endsWith('/config')&&json)cfg=json}catch(e){tx='sem resposta: '+e.message}
+  if(tipo==='funcao'){ok?vivas++:mortas++}
+  const msg=ok?'funcionando':(tipo==='funcao'&&st===404?'NÃO ENCONTRADA (a função não foi publicada)':(st>=500?'COM ERRO NO SERVIDOR':'COM PROBLEMA'));
+  rows+=`<div class="r"><b class="${ok?'ok':'bad'}">${ok?'✔':'✖'} ${nome}: ${msg}</b><code>código ${st} · ${esc(tx.slice(0,220).replace(/\s+/g,' '))}</code></div>`}
+ $('#out').innerHTML=rows;
+ let v='';
+ if(mortas===0){v=`<b class="ok">Todas as funções estão no ar.</b>`;
+  if(cfg)v+=`<br>Versão do código: ${esc(cfg.versao||'antiga (arquivos desatualizados)')}<br>Pagamento (Mercado Pago): ${cfg.pagamento?'ligado':'desligado (falta MP_ACCESS_TOKEN)'}<br>Frete automático: ${cfg.frete?'ligado':'desligado (falta SF_TOKEN ou CEP_ORIGEM)'}<br>Armazenamento do painel: ${cfg.armazenamento?'funcionando':'<span class="bad">com problema</span>'}`}
+ else if(vivas===0)v=`<b class="bad">Nenhuma função está respondendo.</b><br>Isso acontece quando a pasta <code style="display:inline">netlify/functions</code> não foi publicada ou o deploy falhou. Veja em Netlify → Deploys se o último está "Published" ou "Failed".`;
+ else v=`<b class="bad">${mortas} função(ões) com problema.</b> Mande um print desta tela.`;
+ $('#v').innerHTML=v;$('#v').hidden=false}
+$('#go').onclick=run;run();
+</script>
+</main></body></html>

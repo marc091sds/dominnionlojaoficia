@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMINNION | Bonés Premium com Envio para Todo o Brasil</title>
+<meta name="description" content="Bonés premium Polo Ralph Lauren e Nacional Ayrton Senna com envio para todo o Brasil. Monte sua sacola e finalize pelo WhatsApp.">
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DOMINNION | Bonés Premium com Envio para Todo o Brasil">
+<meta property="og:description" content="Elegância e sofisticação em bonés. Compre pelo WhatsApp com segurança.">
+<meta property="og:image" content="img/polo-bege-terno-1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0B;--card:#14151A;--ink:#F5F2EA;--sand:#C8B79A;--line:rgba(200,183,154,.28);--mut:rgba(245,242,234,.68)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+section{padding:56px 0}
+.logo{letter-spacing:.38em;text-transform:uppercase;padding-left:.38em}
+.sec-t{font-size:clamp(28px,6vw,40px);text-align:center;margin-bottom:8px}
+.sec-s{text-align:center;color:var(--mut);max-width:520px;margin:0 auto 28px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:1px solid var(--sand);border-radius:10px;font-weight:600;transition:.25s}
+.btn.pri{background:var(--sand);color:#0A0A0B}
+.btn.pri::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:shine 4.5s infinite}
+@keyframes shine{to{transform:translateX(120%)}}
+.btn.ghost:hover{background:rgba(200,183,154,.12)}
+.btn.blk{width:100%}
+.topbar{background:var(--sand);color:#0A0A0B;text-align:center;font-size:13px;font-weight:500;padding:8px 12px}
+header{position:sticky;top:0;z-index:40;background:rgba(10,10,11,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px}
+.hd .l,.hd .r{display:flex;align-items:center;gap:4px}.hd .r{justify-content:flex-end}
+.ic{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;position:relative}
+.ic svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.ic:hover{background:rgba(200,183,154,.12)}
+.badge{position:absolute;top:3px;right:1px;background:var(--sand);color:#000;font-size:11px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center}
+.pop{animation:pop .4s}@keyframes pop{50%{transform:scale(1.5)}}
+.logo.hl{font-size:18px}
+.menu{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:10px 18px 18px}
+.menu.on{display:block}.menu a{display:block;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.search{display:none;padding:0 0 12px}.search.on{display:block}
+.inp{width:100%;min-height:46px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:0 14px;font:inherit}
+.hero{padding:0}
+.band{background:#000;border-bottom:1px solid var(--line);height:170px;display:grid;place-items:center}
+.band .logo{font-size:clamp(26px,8vw,56px)}
+.circ{width:112px;height:112px;border-radius:50%;background:var(--card);border:1px solid var(--sand);display:grid;place-items:center;margin:-56px auto 0;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.6);font:500 48px 'Cormorant Garamond',serif;color:var(--sand)}
+.hero .tag{font:italic 400 clamp(22px,5vw,30px) 'Cormorant Garamond',serif;color:var(--sand);text-align:center;margin:18px 0 22px}
+.hero .ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding-bottom:44px}
+.trust{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.trust div{border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center;font-size:13.5px;background:var(--card)}
+.trust b{display:block;font-size:22px;margin-bottom:4px}
+.car-w{position:relative}
+.car{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px}
+.car::-webkit-scrollbar{display:none}
+.car .card{flex:0 0 72%;max-width:280px;scroll-snap-align:start}
+.arr{display:none;position:absolute;top:40%;width:44px;height:44px;border-radius:50%;background:var(--bg);border:1px solid var(--sand);z-index:3}
+.arr.p{left:-14px}.arr.n{right:-14px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:9px 16px;min-height:40px;font-size:13.5px}
+.chip.on{background:var(--sand);color:#000;border-color:var(--sand)}
+.tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.tools select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;min-height:42px;padding:0 12px;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;flex-direction:column}
+.ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:#1b1c22;cursor:pointer;width:100%}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .35s}
+.ph.multi img{opacity:0}.ph.multi img.on{opacity:1}
+@media(hover:hover){.ph:hover img{transform:scale(1.06)}.ph.multi:not(.sel):hover img:nth-of-type(1){opacity:0}.ph.multi:not(.sel):hover img:nth-of-type(2){opacity:1}}
+.dots{position:absolute;bottom:4px;left:0;right:0;display:flex;justify-content:center;z-index:3}
+.dots button{width:32px;height:32px;display:grid;place-items:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:rgba(245,242,234,.55);border:1px solid rgba(0,0,0,.45)}
+.dots button.on::after{background:var(--sand)}
+.tagl{position:absolute;top:8px;left:8px;z-index:2;background:var(--bg);border:1px solid var(--sand);color:var(--sand);font-size:11.5px;padding:3px 9px;border-radius:999px}
+.cb{padding:12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.cb h3{font-size:20px;line-height:1.15}.cb small{color:var(--mut)}
+.pr{color:var(--sand);font-weight:600;font-size:17px;margin:4px 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.pr .now{font-size:21px}.pr .sub2{flex-basis:100%}.old{text-decoration-thickness:2px}
+.cb .btn{min-height:42px;font-size:13.5px;padding:0 10px;margin-top:6px}
+.cb .acts{margin-top:auto}
+.empty{text-align:center;color:var(--mut);padding:30px 0;grid-column:1/-1}
+.steps{display:grid;gap:12px}
+.steps div{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--card)}
+.steps b{font:500 24px 'Cormorant Garamond',serif;color:var(--sand);display:block;margin-bottom:4px}
+.fb{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.fb .ph{aspect-ratio:3/4;border-radius:12px;border:1px solid var(--line);cursor:default}
+.faq details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px}
+.faq summary{padding:16px;cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::after{content:"+";color:var(--sand);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 16px 16px;color:var(--mut)}
+.cta{background:var(--card);border-block:1px solid var(--line);text-align:center}
+.cta .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+footer{padding:44px 0 90px;text-align:center;color:var(--mut);font-size:13.5px}
+footer .links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:16px 0}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:60;opacity:0;pointer-events:none;transition:.3s}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);border-left:1px solid var(--sand);z-index:70;transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:26px}
+.items{flex:1;overflow:auto;padding:14px 18px}
+.it{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.it .ph{aspect-ratio:1;border-radius:10px;cursor:default}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;margin-top:6px}
+.qty button{width:38px;height:38px;font-size:18px}.qty span{min-width:28px;text-align:center}
+.rm{color:var(--mut);font-size:12.5px;text-decoration:underline;align-self:start;min-height:36px}
+.df{padding:16px 18px;border-top:1px solid var(--line);background:var(--card)}
+.df .ln{display:flex;justify-content:space-between;margin-bottom:6px}
+.df .tot{font-size:19px;font-weight:600;color:var(--sand)}
+.cup{display:flex;gap:8px;margin:8px 0}.cup .inp{min-height:42px}
+.note{font-size:12.5px;color:var(--sand);margin-bottom:8px}
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:flex-end;justify-content:center;padding:0}
+.modal.on{display:flex}
+.mb{background:var(--bg);border:1px solid var(--sand);border-radius:18px 18px 0 0;width:100%;max-width:880px;max-height:94vh;overflow:auto;padding:18px;position:relative;animation:up .35s}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.mx{position:sticky;top:0;float:right;z-index:3;background:var(--bg);border:1px solid var(--line);border-radius:50%;width:42px;height:42px;font-size:20px}
+.pd{display:grid;gap:18px}
+.gal .main{aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#1b1c22;cursor:zoom-in;position:relative}
+.gal .main img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gal .main.z{cursor:zoom-out}.gal .main.z img{transform:scale(2)}
+.th{display:flex;gap:8px;margin-top:8px}
+.th button{width:62px;height:62px;border:1px solid var(--line);border-radius:8px;overflow:hidden;opacity:.6}
+.th button.on{border-color:var(--sand);opacity:1}.th img{width:100%;height:100%;object-fit:cover}
+.pd h2{font-size:34px;line-height:1.1}
+.info{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;color:var(--mut);margin:14px 0}
+.info li{margin:4px 0 4px 16px}
+.rel{margin-top:22px}.rel h3{font-size:24px;margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--sand);color:#000;padding:12px 20px;border-radius:999px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:.3s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.fl{display:grid;gap:10px;margin-top:14px}.fl label{font-size:13.5px;color:var(--mut)}
+.wa-f{position:fixed;right:14px;bottom:16px;z-index:35;width:54px;height:54px;border-radius:50%;background:var(--sand);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.wa-f svg{width:26px;stroke:#000;fill:none;stroke-width:1.8}
+.rv{opacity:0;transform:translateY(18px);transition:.7s}.rv.in{opacity:1;transform:none}
+.hd .ic{width:40px}
+.cats{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,.06);padding:0 10px}
+.cats::-webkit-scrollbar{display:none}
+.cats a,.cats button{flex:0 0 auto;padding:13px 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.cats a:hover,.cats button:hover{color:var(--sand)}
+.search{position:relative}
+.sug{position:absolute;left:0;right:0;top:100%;margin-top:-8px;background:var(--card);border:1px solid var(--line);border-radius:10px;z-index:5;overflow:hidden}
+.sug button{display:block;width:100%;text-align:left;padding:12px 14px;min-height:44px;border-bottom:1px solid rgba(255,255,255,.06)}
+.drawer .df{padding-bottom:76px}
+.fav{position:absolute;top:6px;right:6px;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(10,10,11,.7);font-size:20px;display:grid;place-items:center}
+.fav.on{color:var(--sand)}
+.old{color:var(--mut);font-weight:400;font-size:13px}
+.off{font-size:12px;border:1px solid var(--sand);border-radius:999px;padding:1px 7px;margin-left:4px}
+.sub2{display:block;color:var(--mut);font-weight:400;font-size:12px}
+.filters+.filters{margin-top:-2px}
+@media(min-width:760px){.cats{justify-content:center}}
+.fro{display:block;padding:8px 0;font-size:13.5px}.fro input{margin-right:6px;accent-color:#C8B79A}
+#frOpts{margin-bottom:6px;font-size:13px;color:var(--mut)}
+.res{position:fixed;left:12px;right:12px;top:70px;z-index:90;max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--sand);border-radius:12px;padding:16px 48px 16px 16px;box-shadow:0 12px 30px rgba(0,0,0,.6)}
+.res button{position:absolute;right:4px;top:4px;width:40px;height:40px}
+[hidden]{display:none!important}
+@media(min-width:760px){
+ .trust{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(3,1fr);gap:18px}
+ .car .card{flex-basis:260px}.arr{display:block}.steps{grid-template-columns:repeat(3,1fr)}.fb{grid-template-columns:repeat(4,1fr)}
+ .modal{align-items:center}.mb{border-radius:18px;padding:26px}.pd{grid-template-columns:1fr 1fr}
+ .logo.hl{font-size:22px}.band{height:210px}
+}
+@media(min-width:1050px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="topbar">📦 Enviamos para todo o Brasil | 🔒 Compre com segurança</div>
+<header>
+ <div class="wrap">
+  <div class="hd">
+   <div class="l">
+    <button class="ic" data-act="menu" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <button class="ic" data-act="search" aria-label="Buscar produtos"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+   </div>
+   <a href="#topo" class="logo hl" aria-label="DOMINNION - início">Dominnion</a>
+   <div class="r">
+    <button class="ic" data-act="favview" aria-label="Ver favoritos"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg><span class="badge" id="favc" hidden>0</span></button>
+    <button class="ic" data-act="cart" aria-label="Abrir sacola"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge" id="cnt">0</span></button>
+   </div>
+  </div>
+  <div class="search" id="searchBox"><input class="inp" id="q" type="search" placeholder="Buscar boné (ex.: urso, azul, Senna)" aria-label="Buscar"><div id="sug" class="sug"></div></div>
+ </div>
+ <nav class="cats" id="catsNav" aria-label="Categorias"></nav>
+ <nav class="menu" id="menu" aria-label="Menu">
+  <span id="menuL"></span><a href="#polo">Polo Ralph Lauren</a><a href="#senna">Nacional Ayrton Senna</a><a href="#como">Como comprar</a><a href="#faq">Perguntas frequentes</a>
+ </nav>
+</header>
+
+<main id="topo">
+<section class="hero">
+ <div class="band"><h1 class="logo">Dominnion</h1></div>
+ <div class="circ" aria-hidden="true">D</div>
+ <p class="tag">Seu estilo começa nos detalhes.</p>
+ <div class="ctas"><a class="btn pri" href="#vitrine">Explorar coleção</a><a class="btn ghost" href="#destaques">Comprar agora</a></div>
+</section>
+
+<div class="wrap"><div class="trust rv">
+ <div><b>📦</b>Envio para todo o Brasil</div><div><b>🔒</b>Compra segura</div><div><b>💬</b>Atendimento no WhatsApp</div><div><b>🏍️</b>Entrega por moto na região</div>
+</div></div>
+
+<section id="destaques"><div class="wrap">
+ <h2 class="sec-t rv">Destaques</h2><p class="sec-s rv">As peças mais pedidas da Dominnion.</p>
+ <div class="car-w"><button class="arr p" data-act="prev" aria-label="Anterior">‹</button><div class="car" id="car" tabindex="0" aria-label="Produtos em destaque"></div><button class="arr n" data-act="next" aria-label="Próximo">›</button></div>
+</div></section>
+
+<div id="vitExtra"></div>
+
+<section id="vitrine"><div class="wrap">
+ <h2 class="sec-t rv">Escolha seu estilo</h2><p class="sec-s rv">Filtre por categoria, modelo, cor, aba, disponibilidade e preço.</p>
+ <div class="filters" id="fl-cat" role="group" aria-label="Categoria"></div>
+ <div class="filters" id="fl-line" role="group" aria-label="Modelo"></div>
+ <div class="filters" id="fl-color" role="group" aria-label="Cor"></div>
+ <div class="filters" id="fl-aba" role="group" aria-label="Tipo de aba"></div>
+ <div class="tools"><select id="disp" aria-label="Disponibilidade"><option value="">Todos</option><option value="1">Só em estoque</option></select>
+ <select id="prc" aria-label="Preço"><option value="0">Qualquer preço</option><option value="70">Até R$ 70</option><option value="100">Até R$ 100</option><option value="200">Até R$ 200</option></select>
+ <select id="sort" aria-label="Ordenar"><option value="new">Mais recentes</option><option value="asc">Menor preço</option></select></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="polo"><div class="wrap">
+ <h2 class="sec-t rv">Polo Ralph Lauren</h2><p class="sec-s rv">Bordados clássicos em tons neutros, para um visual discreto e refinado.</p>
+ <div class="grid" id="g-polo"></div>
+</div></section>
+
+<section id="senna"><div class="wrap">
+ <h2 class="sec-t rv">Nacional Ayrton Senna</h2><p class="sec-s rv">A identidade do Nacional em bonés de acabamento limpo e aba curva.</p>
+ <div class="grid" id="g-senna"></div>
+</div></section>
+
+<section id="como"><div class="wrap">
+ <h2 class="sec-t rv">Como comprar</h2><p class="sec-s rv">Em poucos toques você fala com a gente.</p>
+ <div class="steps rv"><div><b>1. Escolha</b>Veja os bonés e abra os detalhes.</div><div><b>2. Monte a sacola</b>Adicione as peças e ajuste as quantidades.</div><div><b>3. Finalize no WhatsApp</b>Enviamos seu pedido pronto e combinamos entrega e pagamento.</div></div>
+</div></section>
+
+<section id="clientes"><div class="wrap">
+ <h2 class="sec-t rv">Feedbacks de clientes</h2><p class="sec-s rv">Veja quem já comprou.</p>
+ <!-- EDITE: troque por prints reais (img/feedback-1.jpg ... feedback-4.jpg) -->
+ <div class="fb" id="fb"></div>
+ <div style="text-align:center"><a class="btn ghost" id="ig-hl" target="_blank" rel="noopener">Ver destaques no Instagram</a></div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:720px">
+ <h2 class="sec-t rv">Perguntas frequentes</h2><br>
+ <div class="faq" id="faqL"></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+ <h2 class="sec-t">Entre no grupo de ofertas</h2><p class="sec-s" style="margin-bottom:0">Receba lançamentos e promoções primeiro.</p>
+ <div class="row"><a class="btn pri" id="grp" target="_blank" rel="noopener">Entrar no grupo de ofertas</a><a class="btn ghost" id="ig-cta" target="_blank" rel="noopener">Siga @_dominnion</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="logo" style="font-size:20px;color:var(--ink)">Dominnion</div>
+ <div class="links"><a href="#vitrine">Bonés</a><a href="#como">Como comprar</a><a href="#faq">Dúvidas</a><a id="ig-f" target="_blank" rel="noopener">Instagram</a><a id="wa-f2" target="_blank" rel="noopener">WhatsApp</a><a href="/admin.html" rel="nofollow">Área do lojista</a></div>
+ <p style="font-family:Cormorant Garamond,serif;font-size:18px;color:var(--sand);margin-bottom:6px">DOMINNION — ESTILO, PERSONALIDADE E AUTENTICIDADE.</p><p>© 2026 Dominnion — Todos os direitos reservados</p>
+</div></footer>
+
+<a class="wa-f" id="wa-fl" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 19z"/></svg></a>
+
+<div class="ov" id="ov" data-act="closeAll"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-label="Sacola" aria-hidden="true">
+ <div class="dh"><h2>Sua sacola</h2><button class="ic" data-act="closeAll" aria-label="Fechar sacola">✕</button></div>
+ <div class="items" id="items"></div>
+ <div class="df" id="dfoot">
+  <div class="cup" id="cupBox"><input class="inp" id="cup" placeholder="Cupom de desconto" aria-label="Cupom"><button class="btn ghost" data-act="coupon">Aplicar</button></div>
+  <div class="note" id="note"></div>
+  <div class="ln"><span>Subtotal</span><span id="sub"></span></div>
+  <div class="ln" id="dsc" hidden><span>Desconto</span><span id="dscv"></span></div>
+  <div class="ln" id="frl" hidden><span>Frete</span><span id="frv"></span></div>
+  <div class="ln tot"><span>Total</span><span id="tot"></span></div>
+  <div id="frBox"><div class="cup"><input class="inp" id="cep" inputmode="numeric" maxlength="9" placeholder="Digite seu CEP: o frete aparece na hora" aria-label="CEP"><button class="btn ghost" data-act="frete">Calcular</button></div><div id="frOpts" aria-live="polite"></div></div>
+  <button class="btn pri blk" data-act="checkout" style="margin-top:8px">Finalizar pedido</button>
+ </div>
+</aside>
+
+<div class="modal" id="mProd" role="dialog" aria-modal="true" aria-label="Detalhes do produto"><div class="mb" id="mProdB"></div></div>
+<div class="modal" id="mChk" role="dialog" aria-modal="true" aria-label="Finalizar pedido"><div class="mb" style="max-width:480px">
+ <button class="mx" data-act="closeAll" aria-label="Fechar">✕</button>
+ <h2 style="font-size:30px">Finalizar pedido</h2><p style="color:var(--mut)">Só precisamos de alguns dados para montar sua mensagem.</p>
+ <div class="fl">
+  <label>Nome<input class="inp" id="cNome" autocomplete="name"></label>
+  <label>Cidade/Estado<input class="inp" id="cCid" placeholder="Ex.: Belém/PA" autocomplete="address-level2"></label>
+  <div id="payBox" hidden><label>E-mail<input class="inp" id="cEmail" type="email" autocomplete="email"></label>
+  <label>Telefone com DDD<input class="inp" id="cTel" type="tel" autocomplete="tel"></label>
+  <label>Endereço (rua, número, bairro)<input class="inp" id="cEnd" autocomplete="street-address"></label>
+  <button class="btn pri blk" id="payBtn" data-act="pay">Pagar com Mercado Pago (Pix ou cartão)</button>
+  <p style="font-size:12.5px;color:var(--mut)">Para pagar online, calcule e escolha o frete na sacola. O CEP usado é o do cálculo.</p><div id="payErr" role="alert" hidden style="border:1px solid var(--sand);border-radius:10px;padding:10px 12px;font-size:13.5px;margin:8px 0"></div></div>
+  <label>Forma de entrega<select class="inp" id="cEnt"></select></label>
+  <button class="btn pri blk" id="sendBtn" data-act="send">Enviar pedido no WhatsApp</button>
+ </div>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="res" id="res" role="status" hidden></div>
+
+<script>
+/* ============ CONFIG — EDITE AQUI ============ */
+const CONFIG = {
+  nomeLoja: "DOMINNION",
+  instagram: "https://www.instagram.com/_dominnion/",
+  whatsapp: "5591985868104",                       // número com DDI+DDD
+  mensagemInicialWhats: "Oi, tudo bem? Vim do site da Dominnion e tenho interesse em algumas peças.",
+  grupoOfertas: "COLE_AQUI_O_LINK_DO_GRUPO_DE_OFERTAS_DO_WHATSAPP", // sem link, o botão some sozinho
+  entrega: {                                       // textos das opções de entrega
+    brasil: "Envio para todo o Brasil (valor combinado no atendimento)",
+    moto: "Entrega por moto na região",
+    retirada: "Retirada em local combinado"
+  },
+  cupons: { "DOMINNION5": 5 },                     // CÓDIGO: % de desconto
+  freteGratisAcima: 0,                             // 0 = desligado; ex.: 200
+  categorias: ["Bonés","Smartwatches","Relógios","Eletrônicos","Acessórios"], // categoria sem produto aparece como "em breve"
+  parcelas: 0,       // 0 = oculta; ex.: 3 mostra "ou 3x de ..." (use só se sua conta oferecer)
+  descontoPix: 0,    // 0 = oculta; ex.: 5 mostra o preço com 5% no Pix
+  /* Campos opcionais por produto: cat (padrão "Bonés"), aba (padrão "Curva"), precoPromo (ex.: 55),
+     badge ("NOVO", "OFERTA" ou "MAIS VENDIDO" — use só quando for verdade). Smartwatch: cat:"Smartwatches".
+     imagens: até 3 fotos por produto. precoDe: preço antigo riscado (ex.: 78) acima do preço real (preco: 65); 0 ou remova para ocultar. Use só se for um preço que você realmente praticou. */
+  /* PRODUTOS — id, nome, linha, cor, preco, imagens, descricao, estoque, destaque
+     Para nova cor: copie um bloco, troque id/nome/cor/imagens. Fotos na pasta img/ */
+  produtos: [
+    {id:"polo-bege-terno", nome:"Boné Polo bege urso de terno", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
+     imagens:["img/polo-bege-terno-1.jpg","img/polo-bege-terno-2.jpg","img/polo-bege-terno-3.jpg"], precoDe:78, descricao:"Bege com o urso de terno em destaque.", estoque:8, destaque:true},
+    {id:"polo-bege-golfista", nome:"Boné Polo bege urso golfista", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
+     imagens:["img/polo-bege-golfista-1.jpg","img/polo-bege-golfista-2.jpg","img/polo-bege-golfista-3.jpg"], precoDe:78, descricao:"Bege com o urso golfista bordado.", estoque:2, destaque:true},
+    {id:"polo-bege-bordado", nome:"Boné Polo bege bordado preto", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
+     imagens:["img/polo-bege-bordado-1.jpg","img/polo-bege-bordado-2.jpg","img/polo-bege-bordado-3.jpg"], precoDe:78, descricao:"Bege com bordado preto, discreto e versátil.", estoque:10, destaque:false},
+    {id:"nacional-azul", nome:"Boné Nacional Ayrton Senna azul", linha:"Nacional Ayrton Senna", cor:"Azul", preco:65,
+     imagens:["img/nacional-azul-1.jpg","img/nacional-azul-2.jpg","img/nacional-azul-3.jpg"], precoDe:78, descricao:"Azul com a identidade Nacional.", estoque:9, destaque:true},
+    {id:"nacional-preto", nome:"Boné Nacional Ayrton Senna preto", linha:"Nacional Ayrton Senna", cor:"Preto", preco:65,
+     imagens:["img/nacional-preto-1.jpg","img/nacional-preto-2.jpg","img/nacional-preto-3.jpg"], precoDe:78, descricao:"Preto com a identidade Nacional.", estoque:3, destaque:false}
+  ],
+  faq: [
+    ["Qual o prazo de envio?","Após a confirmação do pedido, postamos em poucos dias úteis. O prazo de entrega depende da sua cidade e é informado no atendimento."],
+    ["Quais as formas de pagamento?","Combinamos pelo WhatsApp na hora de finalizar. Fale com a gente para ver as opções disponíveis."],
+    ["Posso trocar?","Sim. Se houver algum problema, chame no WhatsApp e resolvemos a troca."],
+    ["O boné é ajustável?","Sim, todos os modelos têm ajuste na parte de trás."],
+    ["Como acompanho meu pedido?","Enviamos o código de rastreio pelo WhatsApp assim que o pedido for postado."]
+  ]
+};
+/* ============ CÓDIGO ============ */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const P=CONFIG.produtos, brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const norm=()=>P.forEach(p=>{p.cat=p.cat||"Bonés";p.aba=p.aba||"Curva";p.precoPromo=p.precoPromo||0;p.precoDe=p.precoDe||0;p.badge=p.badge||""});norm();
+const pv=p=>p.precoPromo||p.preco;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PH='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#1b1c22"/><text x="200" y="205" fill="#C8B79A" font-family="Georgia,serif" font-size="30" letter-spacing="9" text-anchor="middle">DOMINNION</text></svg>');
+const img=(s,a,lz=1)=>`<img src="${esc(s)}" alt="${esc(a)}" width="600" height="600" ${lz?'loading="lazy"':''} onerror="this.onerror=null;this.src=PH">`;
+const wa=t=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`;
+/* sacola com fallback em memória */
+let mem={cart:[],cup:""};
+const store={get(){try{return JSON.parse(localStorage.getItem('dominnion')||'null')||mem}catch(e){return mem}},set(v){mem=v;try{localStorage.setItem('dominnion',JSON.stringify(v))}catch(e){}}};
+let S=store.get(); if(!Array.isArray(S.cart))S={cart:[],cup:""}; S.fav=S.fav||[];
+const save=()=>store.set(S);
+let FR=null;const sig=()=>JSON.stringify(S.cart); // FR = cotação de frete atual (some se a sacola mudar)
+const find=id=>P.find(p=>p.id===id);
+let filt={cat:"Todas",line:"Todos",color:"Todas",aba:"Todas",sp:"",q:"",fav:false};
+
+const lojista=()=>{try{return +localStorage.getItem('dom_lojista')>Date.now()}catch(e){return false}}; // true só no navegador onde você entrou no painel
+const fotos=p=>p.imagens.slice(0,3);
+function ph3(p){const f=fotos(p);
+  return f.map((s,i)=>img(s,p.nome+(i?' - foto '+(i+1):'')).replace('<img ',i?'<img ':'<img class="on" ')).join('')
+   +(f.length>1?`<span class="dots">${f.map((s,i)=>`<button data-act="cimg" data-i="${i}" class="${i?'':'on'}" aria-label="Ver foto ${i+1}"></button>`).join('')}</span>`:'')}
+const pvh=p=>{const v=pv(p),x=[];
+  if(CONFIG.descontoPix>0)x.push(`${brl(v*(1-CONFIG.descontoPix/100))} no Pix`);
+  if(CONFIG.parcelas>1)x.push(`ou ${CONFIG.parcelas}x de ${brl(v/CONFIG.parcelas)}`);
+  const old=p.precoDe>v?p.precoDe:(p.precoPromo?p.preco:0);
+  return (old?`<s class="old" aria-label="Preço antigo ${brl(old)}">${brl(old)}</s>`:'')+`<span class="now">${brl(v)}</span>`+(old?`<span class="off">-${Math.round((1-v/old)*100)}%</span>`:'')+(x.length?`<small class="sub2">${x.join(' · ')}</small>`:'')};
+function card(p){
+  const low=p.estoque>0&&p.estoque<=3, fv=S.fav.includes(p.id);
+  const tg=p.estoque<1?'Esgotado':(p.badge||(low?'Últimas unidades':''));
+  return `<article class="card"><div class="ph ${fotos(p).length>1?'multi':''}" data-act="open" data-id="${p.id}" role="button" tabindex="0" aria-label="Ver detalhes de ${esc(p.nome)}">
+   ${tg?`<span class="tagl">${esc(tg)}</span>`:''}
+   <button class="fav ${fv?'on':''}" data-act="fav" data-id="${p.id}" aria-label="Favoritar ${esc(p.nome)}">${fv?'♥':'♡'}</button>
+   ${ph3(p)}</div>
+   <div class="cb"><h3>${esc(p.nome)}</h3><small>${esc(p.cor)} · ${p.estoque>0?'Em estoque':'Esgotado'}</small><div class="pr">${pvh(p)}</div>
+   <div class="acts"><button class="btn pri blk" data-act="add" data-id="${p.id}" ${p.estoque<1?'disabled':''}>Adicionar à sacola</button>
+   <button class="btn ghost blk" data-act="open" data-id="${p.id}">Ver detalhes</button>${lojista()?`<a class="btn blk" href="/admin.html?editar=${encodeURIComponent(p.id)}">✏️ Editar produto</a>`:''}</div></div></article>`;
+}
+function renderGrid(){
+  const chips=(a,k)=>a.map(v=>`<button class="chip ${filt[k]===v?'on':''}" data-act="f" data-k="${k}" data-v="${esc(v)}" aria-pressed="${filt[k]===v}">${esc(v)}</button>`).join('');
+  const u=k=>["Todas",...new Set(P.map(p=>p[k]))];
+  $('#fl-cat').innerHTML=chips(["Todas",...CONFIG.categorias],'cat');
+  $('#fl-line').innerHTML=chips(["Todos",...new Set(P.map(p=>p.linha))],'line');
+  $('#fl-color').innerHTML=chips(u('cor'),'color'); $('#fl-aba').innerHTML=chips(u('aba'),'aba');
+  const mx=+$('#prc').value, dsp=$('#disp').value;
+  let l=P.filter(p=>(filt.cat==="Todas"||p.cat===filt.cat)&&(filt.line==="Todos"||p.linha===filt.line)&&(filt.color==="Todas"||p.cor===filt.color)&&(filt.aba==="Todas"||p.aba===filt.aba)&&(!dsp||p.estoque>0)&&(!mx||pv(p)<=mx)&&(!filt.fav||S.fav.includes(p.id))&&(!filt.sp||(filt.sp==="novo"?p.badge==="NOVO":(p.precoPromo>0||p.badge==="OFERTA")))&&(p.nome+p.cor+p.linha+p.descricao+p.cat).toLowerCase().includes(filt.q));
+  l=$('#sort').value==="asc"?[...l].sort((a,b)=>pv(a)-pv(b)):[...l].reverse();
+  const soon=filt.cat!=="Todas"&&!P.some(p=>p.cat===filt.cat);
+  $('#grid').innerHTML=(lojista()?'<a class="btn pri" style="grid-column:1/-1" href="/admin.html?novo=1">+ Adicionar produto</a>':'')+(l.length?l.map(card).join(''):`<p class="empty">${soon?esc(filt.cat)+': em breve. Chame no WhatsApp para saber das novidades.':filt.fav?'Você ainda não favoritou nenhum produto.':'Nada encontrado. Tente outra busca ou filtro.'}</p>`);
+}
+function renderFav(){$('#favc').textContent=S.fav.length;$('#favc').hidden=!S.fav.length}
+function renderStatic(){
+  $('#catsNav').innerHTML='<a href="#topo">Início</a>'+CONFIG.categorias.map(c=>`<button data-act="f" data-k="cat" data-v="${esc(c)}">${esc(c)}</button>`).join('')+'<button data-act="sp" data-v="novo">Novidades</button><button data-act="sp" data-v="oferta">Ofertas</button>';
+  $('#menuL').innerHTML=CONFIG.categorias.map(c=>`<a href="#vitrine" data-act="f" data-k="cat" data-v="${esc(c)}">${esc(c)}</a>`).join('');
+  $('#vitExtra').innerHTML=[["MAIS VENDIDO","Mais vendidos"],["NOVO","Novidades"],["OFERTA","Ofertas especiais"]].map(([b,ti])=>{const l=P.filter(p=>p.badge===b||(b==="OFERTA"&&p.precoPromo));return l.length?`<section><div class="wrap"><h2 class="sec-t">${ti}</h2><br><div class="grid">${l.map(card).join('')}</div></div></section>`:''}).join('');
+  $('#car').innerHTML=P.filter(p=>p.destaque).map(card).join('');
+  $('#g-polo').innerHTML=P.filter(p=>p.linha==="Polo Ralph Lauren").map(card).join('');
+  $('#g-senna').innerHTML=P.filter(p=>p.linha==="Nacional Ayrton Senna").map(card).join('');
+  $('#faqL').innerHTML=CONFIG.faq.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('');
+  $('#fb').innerHTML=[1,2,3,4].map(i=>`<div class="ph">${img('img/feedback-'+i+'.jpg','Feedback de cliente '+i)}</div>`).join('');
+  const w=wa(CONFIG.mensagemInicialWhats);
+  ['#wa-f2','#wa-fl'].forEach(s=>$(s).href=w);
+  ['#ig-hl','#ig-cta','#ig-f'].forEach(s=>$(s).href=CONFIG.instagram);
+  if(/COLE_AQUI/.test(CONFIG.grupoOfertas)||!CONFIG.grupoOfertas)$('#grp').hidden=true; else $('#grp').href=CONFIG.grupoOfertas;
+  $('#cEnt').innerHTML=Object.values(CONFIG.entrega).map(v=>`<option>${esc(v)}</option>`).join('');
+  $('#cupBox').hidden=!Object.keys(CONFIG.cupons||{}).length;
+  const ld=P.map(p=>({"@context":"https://schema.org","@type":"Product",name:p.nome,description:p.descricao,brand:{"@type":"Brand",name:p.linha},color:p.cor,image:p.imagens,
+    offers:{"@type":"Offer",priceCurrency:"BRL",price:pv(p).toFixed(2),availability:p.estoque>0?"https://schema.org/InStock":"https://schema.org/OutOfStock"}}));
+  $$('#ld').forEach(x=>x.remove());const s=document.createElement('script');s.id='ld';s.type='application/ld+json';s.textContent=JSON.stringify(ld);document.head.appendChild(s);
+}
+/* totais */
+function totals(){
+  const sub=S.cart.reduce((a,i)=>a+(find(i.id)?pv(find(i.id)):0)*i.q,0);
+  const pc=(CONFIG.cupons||{})[S.cup]||0, d=sub*pc/100;
+  const fr=FR&&FR.sel?FR.sel.valor:0;return {sub,pc,d,fr,tot:sub-d+fr};
+}
+function renderCart(){setTimeout(autoFrete,0);
+  const n=S.cart.reduce((a,i)=>a+i.q,0); $('#cnt').textContent=n;
+  $('#items').innerHTML=S.cart.length?S.cart.map(i=>{const p=find(i.id);return `<div class="it"><div class="ph">${img(p.imagens[0],p.nome)}</div>
+   <div><strong>${esc(p.nome)}</strong><br><small style="color:var(--mut)">${esc(p.cor)} · ${brl(pv(p))}</small>
+   <div class="qty"><button data-act="dec" data-id="${p.id}" aria-label="Diminuir">−</button><span>${i.q}</span><button data-act="inc" data-id="${p.id}" aria-label="Aumentar">+</button></div></div>
+   <button class="rm" data-act="rm" data-id="${p.id}">Remover</button></div>`}).join('')
+   :'<div class="empty"><p style="font:500 24px Cormorant Garamond,serif;color:var(--ink)">Sua sacola está vazia</p><p style="margin:6px 0 16px">Escolha um boné para começar.</p><button class="btn pri" data-act="closeAll" onclick="location.hash=\'#vitrine\'">Ver bonés</button></div>';
+  if(FR&&FR.sig!==sig())FR=null;
+  const t=totals(); $('#dfoot').hidden=!S.cart.length;$('#frl').hidden=!t.fr;$('#frv').textContent=brl(t.fr);
+  $('#frOpts').innerHTML=FR?FR.opts.map((o,i)=>`<label class="fro"><input type="radio" name="fr" data-act="selfr" data-i="${i}" ${FR.sel&&FR.sel.id===o.id?'checked':''}> ${esc(o.nome)} — ${brl(o.valor)} (${o.prazo} ${o.prazo==1?'dia útil':'dias úteis'})</label>`).join(''):(dg(S.cep).length===8&&S.cart.length&&frKey!==dg(S.cep)+sig()?'Atualizando frete…':'');
+  $('#sub').textContent=brl(t.sub); $('#tot').textContent=brl(t.tot);
+  $('#dsc').hidden=!t.d; $('#dscv').textContent='− '+brl(t.d);
+  const g=CONFIG.freteGratisAcima;
+  $('#note').textContent=g>0?(t.tot>=g?'🎉 Você ganhou frete grátis!':`Faltam ${brl(g-t.tot)} para frete grátis.`):(S.cup&&!t.pc?'Cupom inválido.':(t.pc?`Cupom ${S.cup} aplicado (${t.pc}%).`:''));
+}
+function add(id,q=1,open=true){
+  const p=find(id); if(!p||p.estoque<1)return;
+  const it=S.cart.find(i=>i.id===id); it?it.q=Math.min(it.q+q,99):S.cart.push({id,q});
+  save();renderCart();toast('Produto adicionado');
+  const b=$('#cnt');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+  if(open)openCart();
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)}
+/* painéis */
+let lastFocus=null;
+function openCart(){$('#cep').value=mask(S.cep||'');autoFrete();lastFocus=document.activeElement;$('#drawer').classList.add('on');$('#ov').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#drawer button').focus()}
+function closeAll(){$('#sug').innerHTML='';$('#drawer').classList.remove('on');$('#ov').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');$$('.modal').forEach(m=>m.classList.remove('on'));lastFocus&&lastFocus.focus&&lastFocus.focus()}
+function openProd(id){
+  $('#sug').innerHTML='';
+  const p=find(id); lastFocus=document.activeElement; let qn=1;
+  const rel=P.filter(x=>x.id!==id&&(x.linha===p.linha||x.cor===p.cor)).slice(0,4);
+  $('#mProdB').innerHTML=`<button class="mx" data-act="closeAll" aria-label="Fechar">✕</button><div class="pd">
+   <div class="gal"><div class="main" id="gm" data-act="zoom" role="button" tabindex="0" aria-label="Ampliar foto">${img(p.imagens[0],p.nome,0)}</div>
+   <div class="th">${fotos(p).map((s,i)=>`<button class="${i?'':'on'}" data-act="thumb" data-src="${esc(s)}" aria-label="Foto ${i+1}">${img(s,p.nome+' miniatura '+(i+1))}</button>`).join('')}</div></div>
+   <div><small style="color:var(--sand)">${esc(p.linha)}</small><h2>${esc(p.nome)}</h2><div class="pr" style="font-size:24px">${pvh(p)}</div>
+   <p>Cor: ${esc(p.cor)}</p><p style="color:var(--mut)">${esc(p.descricao)} Logo bordado e aba curva.</p>
+   ${p.estoque>0&&p.estoque<=3?'<p class="note" style="margin-top:8px">Últimas unidades</p>':''}
+   <div class="qty" style="margin:14px 0"><button data-act="mq" data-d="-1" aria-label="Diminuir">−</button><span id="mq">1</span><button data-act="mq" data-d="1" aria-label="Aumentar">+</button></div>
+   <div style="display:grid;gap:8px"><button class="btn pri blk" data-act="addq" data-id="${p.id}">Adicionar à sacola</button><button class="btn ghost blk" data-act="buy" data-id="${p.id}">Comprar agora</button></div>
+   <div class="info"><b style="color:var(--ink)">Calcule o frete</b><input class="inp" id="mCep" inputmode="numeric" maxlength="9" placeholder="Digite seu CEP" aria-label="CEP para calcular o frete" value="${mask(S.cep||'')}" style="margin:8px 0"><div id="mFr" aria-live="polite"></div></div>
+   <ul class="info"><li>${esc(CONFIG.entrega.brasil)}</li><li>${esc(CONFIG.entrega.moto)}</li><li>${esc(CONFIG.entrega.retirada)}</li></ul></div></div>
+   ${rel.length?`<div class="rel"><h3>Você também pode gostar</h3><div class="grid">${rel.map(card).join('')}</div></div>`:''}`;
+  $('#mProd').classList.add('on');$('#ov').classList.add('on');$('#mProdB .mx').focus();
+  CUR=id;const mc=$('#mCep');if(!CFG.frete){if(mc)mc.closest('.info').remove()}else if(mc){mc.addEventListener('input',e=>{e.target.value=mask(e.target.value);previewFrete()});previewFrete()}
+}
+const mqv=()=>+$('#mq').textContent;
+/* mensagem */
+function lines(items){return items.map(i=>{const p=find(i.id);return `${i.q}x ${p.nome} (${brl(pv(p))})`}).join('\n')}
+function sendOrder(){
+  const nome=$('#cNome').value.trim(),cid=$('#cCid').value.trim();
+  if(!nome||!cid){toast('Preencha nome e cidade/estado');return}
+  const t=totals();
+  const msg=`Oi, tudo bem? Vim do site da Dominnion e quero fazer este pedido:\n${lines(S.cart)}\n\nSubtotal: ${brl(t.sub)}`+(t.pc?`\nCupom ${S.cup} (${t.pc}%): − ${brl(t.d)}`:'')+(t.fr?`\nFrete (${FR.sel.nome}): ${brl(t.fr)}`:'')+`\nTotal: ${brl(t.tot)}\nEntrega: ${$('#cEnt').value}\nCidade/Estado: ${cid}\nNome: ${nome}`;
+  window.open(wa(msg),'_blank','noopener');
+}
+/* integração: frete (Melhor Envio) e pagamento (Mercado Pago) via funções do Netlify */
+async function api(u,b){const r=await fetch('/.netlify/functions/'+u,b?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}:{});
+  const tx=await r.text();let d=null;try{d=JSON.parse(tx)}catch(e){}
+  if(!d||typeof d!=='object')throw new Error('resposta inesperada do servidor, código '+r.status);
+  if(!r.ok)throw new Error(d.erro||('erro do servidor, código '+r.status));return d}
+const dg=v=>String(v||'').replace(/\D/g,''),mask=v=>{v=dg(v).slice(0,8);return v.length>5?v.slice(0,5)+'-'+v.slice(5):v};
+let frTimer,frKey='',CUR=null,pvTimer;
+async function calcFrete(manual){   // calcula o frete da sacola inteira (peso, medidas e quantidades vêm do servidor)
+  const cep=dg($('#cep').value||S.cep);
+  if(cep.length!==8){if(manual)toast('Digite um CEP com 8 números');return}
+  if(!S.cart.length)return;
+  S.cep=cep;save();const key=cep+sig();frKey=key;
+  $('#frOpts').textContent='Calculando frete…';
+  try{const d=await api('frete',{cep,items:S.cart});if(!d.opcoes.length)throw new Error('nenhuma transportadora para esse CEP');
+    if(key!==cep+sig())return;   // a sacola mudou durante a consulta: outra consulta já foi agendada
+    const keep=FR&&FR.sel?d.opcoes.find(o=>o.id===FR.sel.id):null;
+    FR={sig:sig(),cep,opts:d.opcoes,sel:keep||d.opcoes[0]}}   // já seleciona a opção mais barata
+  catch(e){FR=null;$('#frOpts').textContent='Frete indisponível agora ('+e.message+'). Você pode finalizar pelo WhatsApp.';return}
+  renderCart()}
+function autoFrete(){clearTimeout(frTimer);if(!CFG.frete)return;const cep=dg(S.cep);
+  if(!S.cart.length||cep.length!==8)return;
+  if(FR&&FR.sig===sig()&&FR.cep===cep)return;
+  if(frKey===cep+sig())return;
+  frTimer=setTimeout(()=>calcFrete(),450)}
+function previewFrete(){   // frete na página do produto (1 item x quantidade escolhida)
+  clearTimeout(pvTimer);const el=$('#mFr');if(!el||!CUR)return;const cep=dg($('#mCep').value);
+  if(cep.length!==8){el.textContent='';return}
+  el.textContent='Calculando frete…';
+  pvTimer=setTimeout(async()=>{try{const q=mqv(),d=await api('frete',{cep,items:[{id:CUR,q}]});
+    if(!d.opcoes.length)throw new Error('nenhuma transportadora para esse CEP');S.cep=cep;save();
+    el.innerHTML=d.opcoes.map(o=>`<div style="display:flex;justify-content:space-between;gap:10px;padding:4px 0"><span>${esc(o.nome)} · ${o.prazo} ${o.prazo==1?'dia útil':'dias úteis'}</span><b style="color:var(--sand)">${brl(o.valor)}</b></div>`).join('')+`<small>Para ${q} ${q>1?'unidades':'unidade'}. O valor final é confirmado na sacola.</small>`}
+   catch(e){el.textContent='Frete indisponível agora ('+e.message+').'}},400)}
+async function pagar(){
+  const v=i=>$(i).value.trim(),c={nome:v('#cNome'),cidade:v('#cCid'),email:v('#cEmail'),tel:v('#cTel'),endereco:v('#cEnd')};
+  if(!c.nome||!c.cidade||!c.email||!c.tel||!c.endereco){toast('Preencha todos os dados');return}
+  if(!/^\S+@\S+\.\S+$/.test(c.email)){toast('E-mail inválido');return}
+  if(!FR||!FR.sel){toast('Calcule e escolha o frete na sacola');return}
+  const b=$('#payBtn'),tx=b.textContent;b.disabled=true;b.textContent='Abrindo pagamento…';
+  try{const d=await api('pagamento',{items:S.cart,cupom:S.cup,cep:FR.cep,freteId:FR.sel.id,cliente:c});if(!d.url)throw new Error('o servidor não devolveu o link de pagamento');location.href=d.url}
+  catch(e){const pe=$('#payErr');pe.textContent='Não foi possível abrir o pagamento agora ('+e.message+'). Envie o pedido pelo WhatsApp logo abaixo, que combinamos o pagamento por lá.';pe.hidden=false;$('#sendBtn').className='btn pri blk';toast('Não foi possível iniciar o pagamento');b.disabled=false;b.textContent=tx}}
+async function retorno(){
+  const p=new URLSearchParams(location.search),st=p.get('pedido'),ref=p.get('ref');if(!st||!ref)return;
+  let s='';try{s=(await api('status?ref='+encodeURIComponent(ref))).status||''}catch(e){}
+  const k=s==='approved'?'ok':(['rejected','cancelled'].includes(s)||(st==='erro'&&!s)?'erro':'pendente');
+  const M={ok:'Pagamento aprovado! Recebemos o pedido '+ref+'. Enviaremos o código de rastreio pelo WhatsApp.',pendente:'Pagamento em análise ou aguardando confirmação (pedido '+ref+'). Avisaremos assim que for confirmado.',erro:'O pagamento não foi concluído. Sua sacola continua salva para você tentar de novo.'};
+  if(k==='ok'){S.cart=[];S.cup="";save();renderCart()}
+  const r=$('#res');r.innerHTML=`<p>${esc(M[k])}</p><button data-act="resx" aria-label="Fechar aviso">✕</button>`;r.hidden=false;
+  history.replaceState(null,'',location.pathname)}
+/* eventos */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]'); if(!b)return; const a=b.dataset.act,id=b.dataset.id;
+  if(a==='add')add(id);
+  else if(a==='addq'){add(id,mqv());$('#mProd').classList.remove('on')}
+  else if(a==='open')openProd(id);
+  else if(a==='buy'){const q=mqv();window.open(wa(`Oi, tudo bem? Vim do site da Dominnion e quero comprar:\n${lines([{id,q}])}\nTotal: ${brl(pv(find(id))*q)}`),'_blank','noopener')}
+  else if(a==='mq'){$('#mq').textContent=Math.max(1,Math.min(99,mqv()+ +b.dataset.d));previewFrete()}
+  else if(a==='thumb'){const m=$('#gm');m.querySelector('img').src=b.dataset.src;$$('.th button').forEach(x=>x.classList.toggle('on',x===b))}
+  else if(a==='zoom')b.classList.toggle('z');
+  else if(a==='inc'||a==='dec'){const it=S.cart.find(i=>i.id===id);it.q+=a==='inc'?1:-1;if(it.q<1)S.cart=S.cart.filter(i=>i!==it);save();renderCart()}
+  else if(a==='rm'){S.cart=S.cart.filter(i=>i.id!==id);save();renderCart()}
+  else if(a==='cart')openCart();
+  else if(a==='closeAll')closeAll();
+  else if(a==='coupon'){const c=$('#cup').value.trim().toUpperCase();S.cup=(CONFIG.cupons||{})[c]?c:"";save();renderCart();if(!S.cup)toast('Cupom inválido')}
+  else if(a==='checkout'){const on=!!(CFG.pagamento&&CFG.frete&&FR&&FR.sel);$('#payBox').hidden=!on;$('#payErr').hidden=true;$('#sendBtn').className='btn blk '+(on?'ghost':'pri');$('#drawer').classList.remove('on');$('#mChk').classList.add('on');$('#cNome').focus()}
+  else if(a==='send')sendOrder();
+  else if(a==='frete')calcFrete(true);
+  else if(a==='cimg'){const w=b.closest('.ph');w.classList.add('sel');[...w.querySelectorAll('img')].forEach((x,i)=>x.classList.toggle('on',i===+b.dataset.i));[...w.querySelectorAll('.dots button')].forEach(x=>x.classList.toggle('on',x===b))}
+  else if(a==='selfr'){FR.sel=FR.opts[+b.dataset.i];renderCart()}
+  else if(a==='pay')pagar();
+  else if(a==='resx')$('#res').hidden=true;
+  else if(a==='f'){const nav=!!b.closest('#catsNav,#menu');filt[b.dataset.k]=b.dataset.v;if(nav){filt.sp="";filt.fav=false;$('#menu').classList.remove('on')}renderGrid();if(nav)$('#vitrine').scrollIntoView()}
+  else if(a==='sp'){filt.sp=b.dataset.v;filt.cat="Todas";filt.fav=false;renderGrid();$('#vitrine').scrollIntoView()}
+  else if(a==='fav'){const i=S.fav.indexOf(id),on=i<0;on?S.fav.push(id):S.fav.splice(i,1);save();renderFav();$$('.fav[data-id="'+id+'"]').forEach(x=>{x.classList.toggle('on',on);x.textContent=on?'♥':'♡'});toast(on?'Adicionado aos favoritos':'Removido dos favoritos');if(filt.fav)renderGrid()}
+  else if(a==='favview'){filt.fav=!filt.fav;filt.sp="";filt.cat="Todas";renderGrid();$('#vitrine').scrollIntoView()}
+  else if(a==='menu'){const m=$('#menu');m.classList.toggle('on');b.setAttribute('aria-expanded',m.classList.contains('on'))}
+  else if(a==='search'){$('#searchBox').classList.toggle('on');$('#q').focus()}
+  else if(a==='prev'||a==='next'){const c=$('#car');c.scrollBy({left:(a==='next'?1:-1)*280,behavior:'smooth'})}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeAll();
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('.ph[data-act],.main[data-act]')){e.preventDefault();e.target.click()}
+});
+$('#menu').addEventListener('click',()=>$('#menu').classList.remove('on'));
+$('#q').addEventListener('input',e=>{filt.q=e.target.value.toLowerCase().trim();renderGrid();
+  $('#sug').innerHTML=filt.q?P.filter(p=>(p.nome+p.cor+p.linha+p.cat).toLowerCase().includes(filt.q)).slice(0,5).map(p=>`<button data-act="open" data-id="${p.id}">${esc(p.nome)} — ${brl(pv(p))}</button>`).join(''):''});
+$('#cep').addEventListener('input',e=>{e.target.value=mask(e.target.value);const c=dg(e.target.value);
+  if(c.length===8){S.cep=c;save();autoFrete()}else if(S.cep){S.cep='';save();FR=null;renderCart()}});
+['#sort','#disp','#prc'].forEach(s=>$(s).addEventListener('change',renderGrid));
+/* autoplay do carrossel (pausa ao tocar/passar o mouse) */
+(function(){const c=$('#car');let pause=false;['touchstart','mouseenter','focusin'].forEach(v=>c.addEventListener(v,()=>pause=true));['touchend','mouseleave','focusout'].forEach(v=>c.addEventListener(v,()=>setTimeout(()=>pause=false,2500)));
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ setInterval(()=>{if(pause)return;const end=c.scrollLeft+c.clientWidth>=c.scrollWidth-4;c.scrollTo({left:end?0:c.scrollLeft+280,behavior:'smooth'})},4000)})();
+/* entrada suave ao rolar */
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15}):null;
+$$('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
+/* Lê os produtos do painel (admin.html) e confere a cada 15 s se mudou. Sem resposta: usa a lista do CONFIG. */
+let catJSON='',CFG={pagamento:false,frete:false};
+async function lerCatalogo(){try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),4000);
+  const r=await fetch('/.netlify/functions/produtos?_='+Date.now(),{signal:c.signal,cache:'no-store'});clearTimeout(tm);if(!r.ok)return false;
+  const d=await r.json();if(!Array.isArray(d.produtos))return false;const j=JSON.stringify(d.produtos);if(j===catJSON)return false;
+  catJSON=j;P.splice(0,P.length,...d.produtos);norm();S.cart=S.cart.filter(i=>find(i.id));save();return true}catch(e){return false}}
+async function lerConfig(){try{const r=await fetch('/.netlify/functions/config',{cache:'no-store'});if(r.ok)CFG=await r.json()}catch(e){}}
+const aplicaCfg=()=>{$('#frBox').hidden=!CFG.frete};
+async function sincronizar(){if(document.hidden)return;if($('#mProd').classList.contains('on')||$('#mChk').classList.contains('on'))return;
+  if(await lerCatalogo()){renderStatic();renderGrid();renderCart()}}
+(async()=>{await Promise.all([lerCatalogo(),lerConfig()]);aplicaCfg();$('#cep').value=mask(S.cep||'');renderStatic();renderGrid();renderCart();renderFav();retorno();
+  setInterval(sincronizar,15000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)sincronizar()})})();
+</script>
+</body>
+</html>

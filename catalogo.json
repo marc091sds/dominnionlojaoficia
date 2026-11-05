@@ -1,0 +1,133 @@
+{
+  "_aviso": "Catálogo inicial. Depois de usar o painel (admin.html), os produtos passam a ser guardados lá e este arquivo vira só o ponto de partida.",
+  "cupons": {
+    "DOMINNION5": 5
+  },
+  "produtos": [
+    {
+      "id": "polo-bege-terno",
+      "nome": "Boné Polo bege urso de terno",
+      "linha": "Polo Ralph Lauren",
+      "cat": "Bonés",
+      "cor": "Bege",
+      "aba": "Curva",
+      "preco": 65,
+      "precoDe": 78,
+      "precoPromo": 0,
+      "badge": "",
+      "descricao": "Bege com o urso de terno em destaque.",
+      "estoque": 8,
+      "destaque": true,
+      "ativo": true,
+      "peso": 0.25,
+      "largura": 20,
+      "altura": 12,
+      "comprimento": 25,
+      "imagens": [
+        "img/polo-bege-terno-1.jpg",
+        "img/polo-bege-terno-2.jpg",
+        "img/polo-bege-terno-3.jpg"
+      ]
+    },
+    {
+      "id": "polo-bege-golfista",
+      "nome": "Boné Polo bege urso golfista",
+      "linha": "Polo Ralph Lauren",
+      "cat": "Bonés",
+      "cor": "Bege",
+      "aba": "Curva",
+      "preco": 65,
+      "precoDe": 78,
+      "precoPromo": 0,
+      "badge": "",
+      "descricao": "Bege com o urso golfista bordado.",
+      "estoque": 2,
+      "destaque": true,
+      "ativo": true,
+      "peso": 0.25,
+      "largura": 20,
+      "altura": 12,
+      "comprimento": 25,
+      "imagens": [
+        "img/polo-bege-golfista-1.jpg",
+        "img/polo-bege-golfista-2.jpg",
+        "img/polo-bege-golfista-3.jpg"
+      ]
+    },
+    {
+      "id": "polo-bege-bordado",
+      "nome": "Boné Polo bege bordado preto",
+      "linha": "Polo Ralph Lauren",
+      "cat": "Bonés",
+      "cor": "Bege",
+      "aba": "Curva",
+      "preco": 65,
+      "precoDe": 78,
+      "precoPromo": 0,
+      "badge": "",
+      "descricao": "Bege com bordado preto, discreto e versátil.",
+      "estoque": 10,
+      "destaque": false,
+      "ativo": true,
+      "peso": 0.25,
+      "largura": 20,
+      "altura": 12,
+      "comprimento": 25,
+      "imagens": [
+        "img/polo-bege-bordado-1.jpg",
+        "img/polo-bege-bordado-2.jpg",
+        "img/polo-bege-bordado-3.jpg"
+      ]
+    },
+    {
+      "id": "nacional-azul",
+      "nome": "Boné Nacional Ayrton Senna azul",
+      "linha": "Nacional Ayrton Senna",
+      "cat": "Bonés",
+      "cor": "Azul",
+      "aba": "Curva",
+      "preco": 65,
+      "precoDe": 78,
+      "precoPromo": 0,
+      "badge": "",
+      "descricao": "Azul com a identidade Nacional.",
+      "estoque": 9,
+      "destaque": true,
+      "ativo": true,
+      "peso": 0.25,
+      "largura": 20,
+      "altura": 12,
+      "comprimento": 25,
+      "imagens": [
+        "img/nacional-azul-1.jpg",
+        "img/nacional-azul-2.jpg",
+        "img/nacional-azul-3.jpg"
+      ]
+    },
+    {
+      "id": "nacional-preto",
+      "nome": "Boné Nacional Ayrton Senna preto",
+      "linha": "Nacional Ayrton Senna",
+      "cat": "Bonés",
+      "cor": "Preto",
+      "aba": "Curva",
+      "preco": 65,
+      "precoDe": 78,
+      "precoPromo": 0,
+      "badge": "",
+      "descricao": "Preto com a identidade Nacional.",
+      "estoque": 3,
+      "destaque": false,
+      "ativo": true,
+      "peso": 0.25,
+      "largura": 20,
+      "altura": 12,
+      "comprimento": 25,
+      "imagens": [
+        "img/nacional-preto-1.jpg",
+        "img/nacional-preto-2.jpg",
+        "img/nacional-preto-3.jpg"
+      ]
+    }
+  ]
+}

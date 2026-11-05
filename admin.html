@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel Dominnion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0B;--card:#14151A;--ink:#F5F2EA;--sand:#C8B79A;--mut:rgba(245,242,234,.7);--line:rgba(200,183,154,.3);--ok:#9bd3a6;--bad:#e59a9a;color-scheme:dark}
+@media(prefers-color-scheme:light){:root{--bg:#F5F2EA;--card:#fff;--ink:#14151A;--sand:#7a6742;--mut:rgba(20,21,26,.7);--line:rgba(122,103,66,.35);--ok:#2e7d46;--bad:#b3261e;color-scheme:light}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;padding:max(14px,env(safe-area-inset-top)) 14px max(60px,env(safe-area-inset-bottom))}
+main{max-width:760px;margin:0 auto}
+h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600}
+h1{font-size:30px;letter-spacing:.12em;text-transform:uppercase}
+h2{font-size:26px;margin-bottom:10px}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--sand);background:none;font-weight:600}
+.btn.pri{background:var(--sand);color:#0A0A0B}.btn.bad{border-color:var(--bad);color:var(--bad)}.btn.sm{min-height:40px;padding:0 12px;font-size:14px}
+.btn:disabled{opacity:.5}
+.inp{width:100%;min-height:46px;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 12px;font:inherit}
+textarea.inp{min-height:84px}
+label{display:block;font-size:13.5px;color:var(--mut);margin-top:12px}
+label .inp{margin-top:4px}
+:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}.tabs .btn{flex:1}.tabs .on{background:var(--sand);color:#0A0A0B}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.item{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center}
+.item img,.ph{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#1b1c22;border:1px solid var(--line)}
+.item small,.mut{color:var(--mut);font-size:13.5px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;grid-column:1/-1}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;margin-left:6px}
+.tag.off{color:var(--bad);border-color:var(--bad)}.tag.ok{color:var(--ok);border-color:var(--ok)}
+.msg{padding:10px 12px;border-radius:10px;border:1px solid var(--line);margin:10px 0;font-size:14px}
+.msg.err{border-color:var(--bad);color:var(--bad)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:20;display:none;overflow:auto;padding:12px}
+.modal.on{display:block}
+.mb{background:var(--bg);border:1px solid var(--sand);border-radius:16px;max-width:560px;margin:0 auto;padding:16px 16px 24px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fotos{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.fotos .f{position:relative}.fotos .ph{width:84px;height:84px}
+.fotos .f button{position:absolute;top:-8px;right:-8px;width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--bad);color:var(--bad)}
+.chk{display:flex;gap:10px;align-items:center;margin-top:14px;color:var(--ink);font-size:15px}.chk input{width:22px;height:22px;accent-color:var(--sand)}
+.sticky{position:sticky;bottom:0;background:var(--bg);padding-top:12px;display:flex;gap:10px}.sticky .btn{flex:1}
+pre{white-space:pre-wrap;font:inherit;color:var(--mut);font-size:13.5px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<!-- ENTRAR -->
+<section id="vLogin" style="max-width:380px;margin:12vh auto 0">
+ <h1 style="text-align:center">Dominnion</h1><p class="mut" style="text-align:center;margin-bottom:18px">Painel da loja</p>
+ <div class="card">
+  <label style="margin-top:0">Senha do painel<input class="inp" id="senha" type="password" autocomplete="current-password"></label>
+  <div id="eLogin"></div>
+  <button class="btn pri" id="bLogin" style="width:100%;margin-top:14px">Entrar</button>
+ </div>
+</section>
+
+<!-- PAINEL -->
+<section id="vApp" class="hidden">
+ <div class="top"><h1>Dominnion</h1><div><a class="btn sm" href="/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit">Ver loja</a> <button class="btn sm" id="bSair">Sair</button></div></div>
+ <div class="tabs"><button class="btn on" id="tProd">Produtos</button><button class="btn" id="tPed">Pedidos</button></div>
+ <div id="eApp"></div>
+ <div id="diag"></div>
+
+ <div id="pProd">
+  <div style="display:flex;gap:10px;margin-bottom:12px"><input class="inp" id="busca" placeholder="Buscar produto" aria-label="Buscar produto"><button class="btn pri" id="bNovo" style="white-space:nowrap">+ Novo</button></div>
+  <div id="lProd"></div>
+ </div>
+ <div id="pPed" class="hidden"><div id="lPed"></div></div>
+</section>
+
+<!-- FORMULÁRIO DE PRODUTO -->
+<div class="modal" id="mForm" role="dialog" aria-modal="true" aria-label="Produto"><div class="mb">
+ <h2 id="fTit">Novo produto</h2>
+ <label>Nome do produto<input class="inp" id="fNome" maxlength="80"></label>
+ <div class="g2">
+  <label>Preço real (R$)<input class="inp" id="fPreco" inputmode="decimal" placeholder="65"></label>
+  <label>Preço antigo riscado (R$)<input class="inp" id="fDe" inputmode="decimal" placeholder="78 (opcional)"></label>
+ </div>
+ <div class="g2">
+  <label>Estoque (unidades)<input class="inp" id="fEst" inputmode="numeric" placeholder="10"></label>
+  <label>Cor<input class="inp" id="fCor" maxlength="30" placeholder="Preto"></label>
+ </div>
+ <div class="g2">
+  <label>Categoria<select class="inp" id="fCat"><option>Bonés</option><option>Smartwatches</option><option>Relógios</option><option>Eletrônicos</option><option>Acessórios</option></select></label>
+  <label>Linha / marca<input class="inp" id="fLinha" list="dLinhas" maxlength="60" placeholder="Polo Ralph Lauren"><datalist id="dLinhas"></datalist></label>
+ </div>
+ <label>Descrição curta<textarea class="inp" id="fDesc" maxlength="300"></textarea></label>
+ <label>Fotos (até 3)</label>
+ <div class="fotos" id="fFotos"></div>
+ <input type="file" id="fArq" accept="image/*" multiple class="hidden">
+ <button class="btn sm" id="bFoto" style="margin-top:10px">+ Adicionar foto</button>
+ <label>Etiqueta no card<select class="inp" id="fBadge"><option value="">Nenhuma</option><option>NOVO</option><option>OFERTA</option><option>MAIS VENDIDO</option></select></label>
+ <label class="chk"><input type="checkbox" id="fDest"> Mostrar nos destaques da página inicial</label>
+ <label class="chk"><input type="checkbox" id="fAtivo"> Disponível no site</label>
+ <details style="margin-top:14px"><summary class="mut" style="cursor:pointer">Dados do envio (para calcular o frete)</summary>
+  <div class="g2"><label>Peso (kg)<input class="inp" id="fPeso" inputmode="decimal"></label><label>Tipo de aba<input class="inp" id="fAba" maxlength="20"></label></div>
+  <div class="g2"><label>Largura (cm)<input class="inp" id="fLarg" inputmode="decimal"></label><label>Altura (cm)<input class="inp" id="fAlt" inputmode="decimal"></label></div>
+  <label>Comprimento (cm)<input class="inp" id="fComp" inputmode="decimal"></label>
+ </details>
+ <div id="eForm"></div>
+ <div class="sticky"><button class="btn" id="bCancel">Cancelar</button><button class="btn pri" id="bSalvar">Salvar</button></div>
+</div></div>
+
+<script>
+const $=s=>document.querySelector(s),brl=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let tok='';try{tok=sessionStorage.getItem('adm')||''}catch(e){}
+let P=[],fotos=[],edId=null;
+const msg=(el,t,err)=>{$(el).innerHTML=t?`<div class="msg ${err?'err':''}" role="status">${esc(t)}</div>`:''};
+
+async function ap(acao,d={}){
+  const r=await fetch('/.netlify/functions/admin',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({acao,...d})});
+  const j=await r.json().catch(()=>({}));
+  if(r.status===401&&acao!=='login'){sair();throw new Error(j.erro||'Sessão expirada')}
+  if(!r.ok)throw new Error(j.erro||'Não foi possível concluir. Tente de novo.');
+  return j}
+function sair(){tok='';try{sessionStorage.removeItem('adm');localStorage.removeItem('dom_lojista')}catch(e){}$('#vApp').classList.add('hidden');$('#vLogin').classList.remove('hidden')}
+function entrou(){try{localStorage.setItem('dom_lojista',Date.now()+12*3600e3)}catch(e){}$('#vLogin').classList.add('hidden');$('#vApp').classList.remove('hidden');carregar()}
+
+$('#bLogin').onclick=async()=>{const b=$('#bLogin');b.disabled=true;msg('#eLogin','');
+  try{const j=await ap('login',{senha:$('#senha').value});tok=j.token;try{sessionStorage.setItem('adm',tok)}catch(e){}$('#senha').value='';entrou()}
+  catch(e){msg('#eLogin',e.message,1)}b.disabled=false};
+$('#senha').addEventListener('keydown',e=>{if(e.key==='Enter')$('#bLogin').click()});
+$('#bSair').onclick=sair;
+$('#tProd').onclick=()=>aba('Prod');$('#tPed').onclick=()=>{aba('Ped');pedidos()};
+function aba(n){['Prod','Ped'].forEach(x=>{$('#t'+x).classList.toggle('on',x===n);$('#p'+x).classList.toggle('hidden',x!==n)})}
+
+/* ---------- PRODUTOS ---------- */
+async function carregar(){try{P=(await ap('listar')).produtos;lista();msg('#eApp','');
+  const u=new URLSearchParams(location.search);if(u.get('novo'))abrir(null);else if(u.get('editar')){const p=P.find(x=>x.id===u.get('editar'));if(p)abrir(p)}
+  if(u.get('novo')||u.get('editar'))history.replaceState(null,'',location.pathname);
+  diag()}catch(e){msg('#eApp',e.message,1)}}
+function lista(){
+  const q=$('#busca').value.toLowerCase();
+  const l=P.filter(p=>(p.nome+p.cor+p.linha).toLowerCase().includes(q));
+  $('#lProd').innerHTML=l.length?l.map(p=>`<div class="card"><div class="item">
+    ${p.imagens&&p.imagens[0]?`<img src="${esc(p.imagens[0])}" alt="" onerror="this.style.visibility='hidden'">`:'<div class="ph"></div>'}
+    <div><b>${esc(p.nome)}</b>${p.ativo===false?'<span class="tag off">Oculto</span>':''}${p.estoque<1?'<span class="tag off">Sem estoque</span>':''}<br>
+    <small>${brl(p.preco)}${p.precoDe>p.preco?' (antes '+brl(p.precoDe)+')':''} · estoque ${p.estoque} · ${esc(p.cor)}</small></div>
+    <div class="acts"><button class="btn sm" data-a="ed" data-id="${esc(p.id)}">Editar</button>
+     <button class="btn sm" data-a="mais" data-id="${esc(p.id)}">+ estoque</button>
+     <button class="btn sm" data-a="vis" data-id="${esc(p.id)}">${p.ativo===false?'Mostrar no site':'Ocultar do site'}</button>
+     <button class="btn sm bad" data-a="del" data-id="${esc(p.id)}">Excluir</button></div></div></div>`).join('')
+   :'<p class="mut">Nenhum produto. Toque em "+ Novo".</p>';
+}
+async function diag(){try{const d=await ap('diag'),l=[];
+  if(!d.armazenamento)l.push(['err','ATENÇÃO: o armazenamento do painel não está funcionando, então o que você salvar NÃO aparece na loja. Erro: '+(d.erro||'desconhecido')]);
+  if(!d.pagamento)l.push(['','Pagamento online desligado (falta MP_ACCESS_TOKEN): os pedidos saem pelo WhatsApp.']);
+  if(!d.frete)l.push(['','Frete automático desligado (falta SF_TOKEN ou CEP_ORIGEM): o frete é combinado pelo WhatsApp.']);
+  $('#diag').innerHTML=l.map(([c,t])=>`<div class="msg ${c}">${esc(t)}</div>`).join('')}catch(e){}}
+$('#busca').oninput=lista;
+$('#lProd').addEventListener('click',async e=>{
+  const b=e.target.closest('[data-a]');if(!b)return;const p=P.find(x=>x.id===b.dataset.id);if(!p)return;
+  try{
+    if(b.dataset.a==='ed')return abrir(p);
+    if(b.dataset.a==='vis'){await ap('salvar',{produto:{...p,ativo:p.ativo===false}})}
+    if(b.dataset.a==='mais'){const n=prompt('Quantas unidades entraram no estoque?','1');if(n===null)return;const k=Math.floor(+String(n).replace(',','.'));if(!(k>0))return;await ap('salvar',{produto:{...p,estoque:(+p.estoque||0)+k}})}
+    if(b.dataset.a==='del'){if(!confirm('Excluir "'+p.nome+'" de vez? Para só esconder, use "Ocultar do site".'))return;await ap('excluir',{id:p.id})}
+    carregar()}catch(er){msg('#eApp',er.message,1)}});
+
+function abrir(p){
+  edId=p?p.id:null;p=p||{estoque:1,ativo:true,destaque:false,peso:0.25,largura:20,altura:12,comprimento:25,aba:'Curva',cat:'Bonés'};
+  $('#fTit').textContent=edId?'Editar produto':'Novo produto';
+  const v=(i,x)=>$(i).value=x==null||x===0&&i==='#fDe'?'':x;
+  v('#fNome',p.nome);v('#fPreco',p.preco);v('#fDe',p.precoDe);v('#fEst',p.estoque);v('#fCor',p.cor);v('#fCat',p.cat);v('#fLinha',p.linha);v('#fDesc',p.descricao);v('#fBadge',p.badge||'');
+  v('#fPeso',p.peso);v('#fAba',p.aba);v('#fLarg',p.largura);v('#fAlt',p.altura);v('#fComp',p.comprimento);
+  $('#fDest').checked=!!p.destaque;$('#fAtivo').checked=p.ativo!==false;
+  $('#dLinhas').innerHTML=[...new Set(P.map(x=>x.linha))].map(l=>`<option value="${esc(l)}">`).join('');
+  fotos=[...(p.imagens||[])];pintaFotos();msg('#eForm','');$('#mForm').classList.add('on');$('#fNome').focus()}
+$('#bNovo').onclick=()=>abrir(null);$('#bCancel').onclick=()=>$('#mForm').classList.remove('on');
+function pintaFotos(){
+  $('#fFotos').innerHTML=fotos.map((u,i)=>`<div class="f"><img class="ph" src="${esc(u)}" alt="Foto ${i+1}" onerror="this.style.opacity=.3"><button data-i="${i}" aria-label="Remover foto ${i+1}">✕</button></div>`).join('');
+  $('#bFoto').classList.toggle('hidden',fotos.length>=3)}
+$('#fFotos').addEventListener('click',e=>{const b=e.target.closest('button');if(b){fotos.splice(+b.dataset.i,1);pintaFotos()}});
+$('#bFoto').onclick=()=>$('#fArq').click();
+async function reduz(f){const b=await createImageBitmap(f),s=Math.min(1,1000/Math.max(b.width,b.height)),c=document.createElement('canvas');
+  c.width=Math.round(b.width*s);c.height=Math.round(b.height*s);c.getContext('2d').drawImage(b,0,0,c.width,c.height);return c.toDataURL('image/jpeg',.82).split(',')[1]}
+$('#fArq').onchange=async e=>{
+  const fs=[...e.target.files].slice(0,3-fotos.length);e.target.value='';
+  for(const f of fs){msg('#eForm','Enviando foto…');
+    try{fotos.push((await ap('upload',{dados:await reduz(f)})).url);pintaFotos();msg('#eForm','')}catch(er){msg('#eForm',er.message,1);break}}};
+$('#bSalvar').onclick=async()=>{
+  const g=i=>$(i).value.trim(),b=$('#bSalvar');b.disabled=true;msg('#eForm','Salvando…');
+  try{await ap('salvar',{produto:{id:edId,nome:g('#fNome'),preco:g('#fPreco'),precoDe:g('#fDe'),estoque:g('#fEst'),cor:g('#fCor'),cat:g('#fCat'),linha:g('#fLinha'),descricao:g('#fDesc'),
+     badge:g('#fBadge'),destaque:$('#fDest').checked,ativo:$('#fAtivo').checked,peso:g('#fPeso'),aba:g('#fAba'),largura:g('#fLarg'),altura:g('#fAlt'),comprimento:g('#fComp'),imagens:fotos}});
+    $('#mForm').classList.remove('on');carregar()}catch(e){msg('#eForm',e.message,1)}b.disabled=false};
+
+/* ---------- PEDIDOS ---------- */
+const ST={approved:['Pago','ok'],pending:['Aguardando pagamento',''],in_process:['Em análise',''],authorized:['Em análise',''],rejected:['Recusado','off'],cancelled:['Cancelado','off'],refunded:['Devolvido','off']};
+let PED=[];
+async function pedidos(){try{PED=(await ap('pedidos')).pedidos;msg('#eApp','');
+  $('#lPed').innerHTML=PED.length?PED.map((o,i)=>{const c=o.cliente||{},f=o.frete||{},s=ST[o.status]||[o.status||'—',''];
+   return `<div class="card"><b>${esc(o.ref)}</b><span class="tag ${s[1]}">${esc(s[0])}</span><br>
+   <small class="mut">${new Date(o.criado).toLocaleString('pt-BR')} · ${brl(o.valor)}</small>
+   <pre>${esc(c.nome)} · ${esc(c.tel)}\n${esc(c.email)}\n${esc(c.endereco)} — ${esc(c.cidade)} · CEP ${esc(o.cep)}\n${(o.itens||[]).map(x=>x.q+'x '+esc(x.nome)).join('\n')}\nFrete: ${esc(f.nome)} (${brl(f.valor)})</pre>
+   <div class="acts"><button class="btn sm" data-p="cp" data-i="${i}">Copiar dados p/ etiqueta</button></div>
+   ${o.status==='approved'?`<label class="chk"><input type="checkbox" data-p="env" data-i="${i}" ${o.enviado?'checked':''}> Já enviei este pedido</label>
+   <label>Código de rastreio<input class="inp" data-p="rast" data-i="${i}" value="${esc(o.rastreio)}" maxlength="40"></label>
+   <div class="acts"><button class="btn pri sm" data-p="sv" data-i="${i}">Salvar envio</button></div>`:''}</div>`}).join('')
+   :'<p class="mut">Nenhum pedido ainda. Os pedidos pagos pelo site aparecem aqui.</p>'}catch(e){msg('#eApp',e.message,1)}}
+$('#lPed').addEventListener('click',async e=>{
+  const b=e.target.closest('button[data-p]');if(!b)return;const o=PED[+b.dataset.i],c=o.cliente||{},f=o.frete||{};
+  if(b.dataset.p==='cp'){const t=`Nome: ${c.nome}\nTelefone: ${c.tel}\nE-mail: ${c.email}\nEndereço: ${c.endereco}\nCidade/UF: ${c.cidade}\nCEP: ${o.cep}\nServiço escolhido: ${f.nome}\nConteúdo: ${(o.itens||[]).map(x=>x.q+'x '+x.nome).join(', ')}`;
+    try{await navigator.clipboard.writeText(t);b.textContent='Copiado ✓'}catch(er){prompt('Copie os dados:',t)}}
+  if(b.dataset.p==='sv'){const card=b.closest('.card');try{await ap('pedido',{ref:o.ref,enviado:card.querySelector('[data-p=env]').checked,rastreio:card.querySelector('[data-p=rast]').value});b.textContent='Salvo ✓'}catch(er){msg('#eApp',er.message,1)}}});
+
+if(tok)entrou();
+</script>
+</main>
+</body>
+</html>
