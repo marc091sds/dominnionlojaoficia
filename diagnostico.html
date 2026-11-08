@@ -49,7 +49,7 @@ async function run(){
  $('#out').innerHTML=rows;
  let v='';
  if(mortas===0){v=`<b class="ok">Todas as funções estão no ar.</b>`;
-  if(cfg)v+=`<br>Versão do código: ${esc(cfg.versao||'antiga (arquivos desatualizados)')}<br>Pagamento (Mercado Pago): ${cfg.pagamento?'ligado':'desligado (falta MP_ACCESS_TOKEN)'}<br>Frete automático: ${cfg.frete?'ligado':'desligado (falta SF_TOKEN ou CEP_ORIGEM)'}<br>Armazenamento do painel: ${cfg.armazenamento?'funcionando':'<span class="bad">com problema</span>'}`}
+  if(cfg)v+=`<br>Versão do código: ${esc(cfg.versao||'antiga (arquivos desatualizados)')}<br>Pagamento (Mercado Pago): ${cfg.pagamento?'ligado':'desligado (falta MP_ACCESS_TOKEN)'}<br>Frete automático: ${cfg.frete?'ligado':'desligado (falta SF_TOKEN ou CEP_ORIGEM)'}<br>Senha do painel (ADMIN_SENHA): ${cfg.painel?'configurada':'<span class="bad">NÃO encontrada, ou com menos de 10 caracteres</span>'}<br>Armazenamento do painel: ${cfg.armazenamento?'funcionando':'<span class="bad">com problema</span>'}`}
  else if(vivas===0)v=`<b class="bad">Nenhuma função está respondendo.</b><br>Isso acontece quando a pasta <code style="display:inline">netlify/functions</code> não foi publicada ou o deploy falhou. Veja em Netlify → Deploys se o último está "Published" ou "Failed".`;
  else v=`<b class="bad">${mortas} função(ões) com problema.</b> Mande um print desta tela.`;
  $('#v').innerHTML=v;$('#v').hidden=false}

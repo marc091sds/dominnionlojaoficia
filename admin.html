@@ -63,7 +63,7 @@ pre{white-space:pre-wrap;font:inherit;color:var(--mut);font-size:13.5px}
 <!-- PAINEL -->
 <section id="vApp" class="hidden">
  <div class="top"><h1>Dominnion</h1><div><a class="btn sm" href="/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit">Ver loja</a> <button class="btn sm" id="bSair">Sair</button></div></div>
- <div class="tabs"><button class="btn on" id="tProd">Produtos</button><button class="btn" id="tPed">Pedidos</button></div>
+ <div class="tabs"><button class="btn on" id="tProd">Produtos</button><button class="btn" id="tPed">Pedidos</button><button class="btn" id="tSite">Página</button></div>
  <div id="eApp"></div>
  <div id="diag"></div>
 
@@ -72,6 +72,7 @@ pre{white-space:pre-wrap;font:inherit;color:var(--mut);font-size:13.5px}
   <div id="lProd"></div>
  </div>
  <div id="pPed" class="hidden"><div id="lPed"></div></div>
+ <div id="pSite" class="hidden"><div id="eSite"></div><div id="fSite"></div><div class="sticky"><button class="btn pri" id="bSite">Salvar página</button></div></div>
 </section>
 
 <!-- FORMULÁRIO DE PRODUTO -->
@@ -128,8 +129,8 @@ $('#bLogin').onclick=async()=>{const b=$('#bLogin');b.disabled=true;msg('#eLogin
   catch(e){msg('#eLogin',e.message,1)}b.disabled=false};
 $('#senha').addEventListener('keydown',e=>{if(e.key==='Enter')$('#bLogin').click()});
 $('#bSair').onclick=sair;
-$('#tProd').onclick=()=>aba('Prod');$('#tPed').onclick=()=>{aba('Ped');pedidos()};
-function aba(n){['Prod','Ped'].forEach(x=>{$('#t'+x).classList.toggle('on',x===n);$('#p'+x).classList.toggle('hidden',x!==n)})}
+$('#tProd').onclick=()=>aba('Prod');$('#tPed').onclick=()=>{aba('Ped');pedidos()};$('#tSite').onclick=()=>{aba('Site');site()};
+function aba(n){['Prod','Ped','Site'].forEach(x=>{$('#t'+x).classList.toggle('on',x===n);$('#p'+x).classList.toggle('hidden',x!==n)})}
 
 /* ---------- PRODUTOS ---------- */
 async function carregar(){try{P=(await ap('listar')).produtos;lista();msg('#eApp','');
@@ -154,15 +155,16 @@ async function diag(){try{const d=await ap('diag'),l=[];
   if(!d.pagamento)l.push(['','Pagamento online desligado (falta MP_ACCESS_TOKEN): os pedidos saem pelo WhatsApp.']);
   if(!d.frete)l.push(['','Frete automático desligado (falta SF_TOKEN ou CEP_ORIGEM): o frete é combinado pelo WhatsApp.']);
   $('#diag').innerHTML=l.map(([c,t])=>`<div class="msg ${c}">${esc(t)}</div>`).join('')}catch(e){}}
+function aplicar(pr){const i=P.findIndex(x=>x.id===pr.id);i>=0?P[i]=pr:P.push(pr);lista();avisaLoja()}
 $('#busca').oninput=lista;
 $('#lProd').addEventListener('click',async e=>{
   const b=e.target.closest('[data-a]');if(!b)return;const p=P.find(x=>x.id===b.dataset.id);if(!p)return;
   try{
     if(b.dataset.a==='ed')return abrir(p);
-    if(b.dataset.a==='vis'){await ap('salvar',{produto:{...p,ativo:p.ativo===false}})}
-    if(b.dataset.a==='mais'){const n=prompt('Quantas unidades entraram no estoque?','1');if(n===null)return;const k=Math.floor(+String(n).replace(',','.'));if(!(k>0))return;await ap('salvar',{produto:{...p,estoque:(+p.estoque||0)+k}})}
-    if(b.dataset.a==='del'){if(!confirm('Excluir "'+p.nome+'" de vez? Para só esconder, use "Ocultar do site".'))return;await ap('excluir',{id:p.id})}
-    carregar()}catch(er){msg('#eApp',er.message,1)}});
+    if(b.dataset.a==='vis'){aplicar((await ap('salvar',{produto:{...p,ativo:p.ativo===false}})).produto)}
+    if(b.dataset.a==='mais'){const n=prompt('Quantas unidades entraram no estoque?','1');if(n===null)return;const k=Math.floor(+String(n).replace(',','.'));if(!(k>0))return;aplicar((await ap('salvar',{produto:{...p,estoque:(+p.estoque||0)+k}})).produto)}
+    if(b.dataset.a==='del'){if(!confirm('Excluir "'+p.nome+'" de vez? Para só esconder, use "Ocultar do site".'))return;await ap('excluir',{id:p.id});P=P.filter(x=>x.id!==p.id);lista();avisaLoja()}
+  }catch(er){msg('#eApp',er.message,1)}});
 
 function abrir(p){
   edId=p?p.id:null;p=p||{estoque:1,ativo:true,destaque:false,peso:0.25,largura:20,altura:12,comprimento:25,aba:'Curva',cat:'Bonés'};
@@ -187,9 +189,9 @@ $('#fArq').onchange=async e=>{
     try{fotos.push((await ap('upload',{dados:await reduz(f)})).url);pintaFotos();msg('#eForm','')}catch(er){msg('#eForm',er.message,1);break}}};
 $('#bSalvar').onclick=async()=>{
   const g=i=>$(i).value.trim(),b=$('#bSalvar');b.disabled=true;msg('#eForm','Salvando…');
-  try{await ap('salvar',{produto:{id:edId,nome:g('#fNome'),preco:g('#fPreco'),precoDe:g('#fDe'),estoque:g('#fEst'),cor:g('#fCor'),cat:g('#fCat'),linha:g('#fLinha'),descricao:g('#fDesc'),
-     badge:g('#fBadge'),destaque:$('#fDest').checked,ativo:$('#fAtivo').checked,peso:g('#fPeso'),aba:g('#fAba'),largura:g('#fLarg'),altura:g('#fAlt'),comprimento:g('#fComp'),imagens:fotos}});
-    $('#mForm').classList.remove('on');carregar()}catch(e){msg('#eForm',e.message,1)}b.disabled=false};
+  try{aplicar((await ap('salvar',{produto:{id:edId,nome:g('#fNome'),preco:g('#fPreco'),precoDe:g('#fDe'),estoque:g('#fEst'),cor:g('#fCor'),cat:g('#fCat'),linha:g('#fLinha'),descricao:g('#fDesc'),
+     badge:g('#fBadge'),destaque:$('#fDest').checked,ativo:$('#fAtivo').checked,peso:g('#fPeso'),aba:g('#fAba'),largura:g('#fLarg'),altura:g('#fAlt'),comprimento:g('#fComp'),imagens:fotos}})).produto);
+    $('#mForm').classList.remove('on')}catch(e){msg('#eForm',e.message,1)}b.disabled=false};
 
 /* ---------- PEDIDOS ---------- */
 const ST={approved:['Pago','ok'],pending:['Aguardando pagamento',''],in_process:['Em análise',''],authorized:['Em análise',''],rejected:['Recusado','off'],cancelled:['Cancelado','off'],refunded:['Devolvido','off']};
@@ -209,6 +211,65 @@ $('#lPed').addEventListener('click',async e=>{
   if(b.dataset.p==='cp'){const t=`Nome: ${c.nome}\nTelefone: ${c.tel}\nE-mail: ${c.email}\nEndereço: ${c.endereco}\nCidade/UF: ${c.cidade}\nCEP: ${o.cep}\nServiço escolhido: ${f.nome}\nConteúdo: ${(o.itens||[]).map(x=>x.q+'x '+x.nome).join(', ')}`;
     try{await navigator.clipboard.writeText(t);b.textContent='Copiado ✓'}catch(er){prompt('Copie os dados:',t)}}
   if(b.dataset.p==='sv'){const card=b.closest('.card');try{await ap('pedido',{ref:o.ref,enviado:card.querySelector('[data-p=env]').checked,rastreio:card.querySelector('[data-p=rast]').value});b.textContent='Salvo ✓'}catch(er){msg('#eApp',er.message,1)}}});
+
+
+/* ---------- PÁGINA (textos, fotos, links, cores e blocos da loja) ---------- */
+const BC=(()=>{try{return new BroadcastChannel('dominnion')}catch(e){return null}})();
+const avisaLoja=()=>BC&&BC.postMessage('mudou');
+const DEF={aviso:'📦 Enviamos para todo o Brasil | 🔒 Compre com segurança',hero_tag:'Seu estilo começa nos detalhes.',hero_btn1:'Explorar coleção',hero_btn2:'Comprar agora',
+ destaques_t:'Destaques',destaques_s:'As peças mais pedidas da Dominnion.',vitrine_t:'Escolha seu estilo',vitrine_s:'Filtre por categoria, modelo, cor, aba, disponibilidade e preço.',
+ polo_t:'Polo Ralph Lauren',polo_s:'Bordados clássicos em tons neutros, para um visual discreto e refinado.',senna_t:'Nacional Ayrton Senna',senna_s:'A identidade do Nacional em bonés de acabamento limpo e aba curva.',
+ como_t:'Como comprar',como_s:'Em poucos toques você fala com a gente.',feed_t:'Feedbacks de clientes',feed_s:'Veja quem já comprou.',faq_t:'Perguntas frequentes',
+ cta_t:'Entre no grupo de ofertas',cta_s:'Receba lançamentos e promoções primeiro.',cta_btn_grupo:'Entrar no grupo de ofertas',cta_btn_ig:'Siga @_dominnion',
+ rodape_frase:'DOMINNION — ESTILO, PERSONALIDADE E AUTENTICIDADE.',whatsapp_msg:'Oi, tudo bem? Vim do site da Dominnion e tenho interesse em algumas peças.',whatsapp:'5591985868104',instagram:'https://www.instagram.com/_dominnion/',grupo:'https://chat.whatsapp.com/...'};
+const GR=[['Topo e capa',[['aviso','Aviso fixo no topo'],['hero_tag','Frase da capa'],['hero_btn1','Texto do botão 1'],['hero_btn2','Texto do botão 2']]],
+ ['Títulos das seções',[['destaques_t','Destaques: título'],['destaques_s','Destaques: subtítulo'],['vitrine_t','Vitrine: título'],['vitrine_s','Vitrine: subtítulo'],['polo_t','Polo: título'],['polo_s','Polo: subtítulo'],['senna_t','Nacional: título'],['senna_s','Nacional: subtítulo'],['como_t','Como comprar: título'],['como_s','Como comprar: subtítulo'],['feed_t','Feedbacks: título'],['feed_s','Feedbacks: subtítulo'],['faq_t','Perguntas: título'],['cta_t','Chamada final: título'],['cta_s','Chamada final: subtítulo'],['cta_btn_grupo','Botão do grupo de ofertas'],['cta_btn_ig','Botão do Instagram'],['rodape_frase','Frase do rodapé']]],
+ ['Contato e links',[['whatsapp','WhatsApp com DDD (só números)'],['whatsapp_msg','Mensagem inicial do WhatsApp','area'],['instagram','Link do Instagram (https://...)'],['grupo','Link do grupo de ofertas (https://...)']]]];
+const SEC=[['destaques','Destaques'],['vitrine','Vitrine "Escolha seu estilo"'],['polo','Linha Polo'],['senna','Linha Nacional'],['como','Como comprar'],['feed','Feedbacks de clientes'],['faq','Perguntas frequentes'],['cta','Chamada final (grupo de ofertas)']];
+const PAS=['1. Escolha','2. Monte a sacola','3. Finalize no WhatsApp'],SEL=[['📦','Envio para todo o Brasil'],['🔒','Compra segura'],['💬','Atendimento no WhatsApp'],['🏍️','Entrega por moto na região']];
+let S2={};
+async function subir(f){return (await ap('upload',{dados:await reduz(f)})).url}
+async function site(){try{S2=(await ap('site_ler')).site||{};['passos','selos','faq','feedbacks','blocos'].forEach(k=>S2[k]=S2[k]||[]);S2.secoes=S2.secoes||{};pintaSite();msg('#eSite','')}catch(e){msg('#eSite',e.message,1)}}
+function pintaSite(){
+  const v=k=>esc(S2[k]||''),ph=k=>esc(DEF[k]||'');
+  let h='<p class="mut" style="margin-bottom:12px">Campo em branco = vale o texto original da loja. Ao salvar, a loja atualiza sozinha em poucos segundos.</p>';
+  for(const [tit,cs] of GR)h+=`<details class="card" ${tit==='Topo e capa'?'open':''}><summary><b>${tit}</b></summary>`+cs.map(([k,l,t])=>t==='area'?`<label>${l}<textarea class="inp" data-k="${k}" placeholder="${ph(k)}">${v(k)}</textarea></label>`:`<label>${l}<input class="inp" data-k="${k}" value="${v(k)}" placeholder="${ph(k)}"></label>`).join('')
+   +(tit==='Topo e capa'?`<label>Foto de fundo da capa (opcional)</label><div class="fotos">${S2.hero_imagem?`<div class="f"><img class="ph" src="${esc(S2.hero_imagem)}" alt="Capa"><button data-s="hero-x" aria-label="Remover">✕</button></div>`:''}</div><button class="btn sm" data-s="hero-up" style="margin-top:8px">${S2.hero_imagem?'Trocar foto':'+ Escolher foto'}</button>`:'')+'</details>';
+  h+=`<details class="card"><summary><b>Cores</b></summary><p class="mut">Use cores que combinem e deixem o texto legível.</p>
+   <label>Cor de destaque (botões, preços)<input type="color" data-c="cor_destaque" value="${S2.cor_destaque||'#C8B79A'}" style="width:100%;height:46px"></label><button class="btn sm" data-s="cor-x" data-k="cor_destaque" style="margin-top:6px">Voltar ao padrão</button>
+   <label>Cor de fundo<input type="color" data-c="cor_fundo" value="${S2.cor_fundo||'#0A0A0B'}" style="width:100%;height:46px"></label><button class="btn sm" data-s="cor-x" data-k="cor_fundo" style="margin-top:6px">Voltar ao padrão</button></details>`;
+  h+=`<details class="card"><summary><b>Selos de confiança (4)</b></summary>`+[0,1,2,3].map(i=>{const x=S2.selos[i]||{};return `<div class="g2"><label>Emoji<input class="inp" data-l="selos" data-i="${i}" data-f="i" value="${esc(x.i||'')}" placeholder="${SEL[i][0]}"></label><label>Texto<input class="inp" data-l="selos" data-i="${i}" data-f="t" value="${esc(x.t||'')}" placeholder="${SEL[i][1]}"></label></div>`}).join('')+'</details>';
+  h+=`<details class="card"><summary><b>Como comprar (3 passos)</b></summary>`+[0,1,2].map(i=>{const x=S2.passos[i]||{};return `<label>Passo ${i+1}: título<input class="inp" data-l="passos" data-i="${i}" data-f="t" value="${esc(x.t||'')}" placeholder="${PAS[i]}"></label><label>Passo ${i+1}: texto<input class="inp" data-l="passos" data-i="${i}" data-f="s" value="${esc(x.s||'')}"></label>`}).join('')+'</details>';
+  h+=`<details class="card"><summary><b>Perguntas frequentes</b></summary><p class="mut">Se não houver nenhuma, vale a lista original.</p>`+S2.faq.map((x,i)=>`<div class="card" style="margin-top:10px"><label style="margin-top:0">Pergunta<input class="inp" data-l="faq" data-i="${i}" data-f="q" value="${esc(x.q)}"></label><label>Resposta<textarea class="inp" data-l="faq" data-i="${i}" data-f="a">${esc(x.a)}</textarea></label><button class="btn sm bad" data-s="faq-x" data-i="${i}" style="margin-top:8px">Remover</button></div>`).join('')+(S2.faq.length<12?'<button class="btn sm" data-s="faq-add" style="margin-top:10px">+ Adicionar pergunta</button>':'')+'</details>';
+  h+=`<details class="card"><summary><b>Fotos de clientes (feedbacks)</b></summary><div class="fotos">${S2.feedbacks.map((u,i)=>`<div class="f"><img class="ph" src="${esc(u)}" alt="Feedback ${i+1}"><button data-s="fb-x" data-i="${i}" aria-label="Remover">✕</button></div>`).join('')}</div>${S2.feedbacks.length<8?'<button class="btn sm" data-s="fb-up" style="margin-top:10px">+ Adicionar foto</button>':''}</details>`;
+  h+=`<details class="card"><summary><b>Blocos de texto livres (até 3)</b></summary><p class="mut">Aparecem logo abaixo dos selos, antes dos destaques. Bom para avisos, promoções e novidades.</p>`+S2.blocos.map((b,i)=>`<div class="card" style="margin-top:10px"><label style="margin-top:0">Título<input class="inp" data-l="blocos" data-i="${i}" data-f="t" value="${esc(b.t)}"></label><label>Texto<textarea class="inp" data-l="blocos" data-i="${i}" data-f="s">${esc(b.s)}</textarea></label>
+   <div class="fotos">${b.img?`<div class="f"><img class="ph" src="${esc(b.img)}" alt="Foto do bloco"><button data-s="bl-imgx" data-i="${i}" aria-label="Remover foto">✕</button></div>`:''}</div><button class="btn sm" data-s="bl-img" data-i="${i}" style="margin-top:8px">${b.img?'Trocar foto':'+ Foto do bloco'}</button>
+   <div class="g2"><label>Texto do botão<input class="inp" data-l="blocos" data-i="${i}" data-f="btn" value="${esc(b.btn)}" placeholder="Ver ofertas"></label><label>Link do botão<input class="inp" data-l="blocos" data-i="${i}" data-f="link" value="${esc(b.link)}" placeholder="https://... ou #vitrine"></label></div>
+   <button class="btn sm bad" data-s="bl-x" data-i="${i}" style="margin-top:8px">Remover bloco</button></div>`).join('')+(S2.blocos.length<3?'<button class="btn sm" data-s="bl-add" style="margin-top:10px">+ Adicionar bloco</button>':'')+'</details>';
+  h+=`<details class="card"><summary><b>Mostrar ou esconder seções</b></summary>`+SEC.map(([k,l])=>`<label class="chk"><input type="checkbox" data-sec="${k}" ${S2.secoes[k]===false?'':'checked'}> ${l}</label>`).join('')+'</details>';
+  $('#fSite').innerHTML=h;
+}
+$('#fSite').addEventListener('input',e=>{const t=e.target,k=t.dataset.k,l=t.dataset.l;
+  if(k)S2[k]=t.value;else if(t.dataset.c)S2[t.dataset.c]=t.value;
+  else if(l){const i=+t.dataset.i;S2[l][i]=S2[l][i]||{};S2[l][i][t.dataset.f]=t.value}});
+$('#fSite').addEventListener('change',e=>{const k=e.target.dataset.sec;if(k)S2.secoes[k]=e.target.checked});
+function escolher(cb){const i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=async()=>{if(!i.files[0])return;msg('#eSite','Enviando foto…');try{await cb(await subir(i.files[0]));msg('#eSite','')}catch(er){msg('#eSite',er.message,1)}};i.click()}
+$('#fSite').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;const a=b.dataset.s,i=+b.dataset.i;
+  const abertos=[...document.querySelectorAll('#fSite details')].map(d=>d.open);const repinta=()=>{pintaSite();[...document.querySelectorAll('#fSite details')].forEach((d,n)=>d.open=!!abertos[n])};
+  if(a==='hero-up')escolher(u=>{S2.hero_imagem=u;repinta()});
+  else if(a==='hero-x'){S2.hero_imagem='';repinta()}
+  else if(a==='cor-x'){delete S2[b.dataset.k];repinta()}
+  else if(a==='faq-add'){S2.faq.push({q:'',a:''});repinta()}
+  else if(a==='faq-x'){S2.faq.splice(i,1);repinta()}
+  else if(a==='fb-up')escolher(u=>{S2.feedbacks.push(u);repinta()});
+  else if(a==='fb-x'){S2.feedbacks.splice(i,1);repinta()}
+  else if(a==='bl-add'){S2.blocos.push({t:'',s:'',img:'',btn:'',link:''});repinta()}
+  else if(a==='bl-x'){S2.blocos.splice(i,1);repinta()}
+  else if(a==='bl-img')escolher(u=>{S2.blocos[i].img=u;repinta()});
+  else if(a==='bl-imgx'){S2.blocos[i].img='';repinta()}});
+$('#bSite').onclick=async()=>{const b=$('#bSite');b.disabled=true;msg('#eSite','Salvando…');
+  try{S2=(await ap('site_salvar',{site:S2})).site;['passos','selos','faq','feedbacks','blocos'].forEach(k=>S2[k]=S2[k]||[]);pintaSite();avisaLoja();msg('#eSite','Página salva. A loja atualiza sozinha em poucos segundos.')}
+  catch(e){msg('#eSite',e.message,1)}b.disabled=false};
 
 if(tok)entrou();
 </script>

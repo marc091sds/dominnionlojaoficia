@@ -4,5 +4,5 @@ exports.handler = async e => {
   let armazenamento = true;
   try { await st(e, 'seg').get('ping'); } catch (err) { armazenamento = false; }
   return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-    body: JSON.stringify({ pagamento: !!process.env.MP_ACCESS_TOKEN, frete: !!process.env.CEP_ORIGEM && !!(process.env.SF_TOKEN || process.env.ME_TOKEN), armazenamento, versao: VERSAO }) };
+    body: JSON.stringify({ pagamento: !!process.env.MP_ACCESS_TOKEN, frete: !!process.env.CEP_ORIGEM && !!(process.env.SF_TOKEN || process.env.ME_TOKEN), armazenamento, painel: (process.env.ADMIN_SENHA || '').trim().length >= 10, versao: VERSAO }) };
 };

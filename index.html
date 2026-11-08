@@ -170,7 +170,7 @@ footer .links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin
 </style>
 </head>
 <body>
-<div class="topbar">📦 Enviamos para todo o Brasil | 🔒 Compre com segurança</div>
+<div class="topbar" data-t="aviso">📦 Enviamos para todo o Brasil | 🔒 Compre com segurança</div>
 <header>
  <div class="wrap">
   <div class="hd">
@@ -196,23 +196,25 @@ footer .links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin
 <section class="hero">
  <div class="band"><h1 class="logo">Dominnion</h1></div>
  <div class="circ" aria-hidden="true">D</div>
- <p class="tag">Seu estilo começa nos detalhes.</p>
- <div class="ctas"><a class="btn pri" href="#vitrine">Explorar coleção</a><a class="btn ghost" href="#destaques">Comprar agora</a></div>
+ <p class="tag" data-t="hero_tag">Seu estilo começa nos detalhes.</p>
+ <div class="ctas"><a class="btn pri" href="#vitrine" data-t="hero_btn1">Explorar coleção</a><a class="btn ghost" href="#destaques" data-t="hero_btn2">Comprar agora</a></div>
 </section>
 
-<div class="wrap"><div class="trust rv">
+<div class="wrap"><div class="trust rv" id="selos">
  <div><b>📦</b>Envio para todo o Brasil</div><div><b>🔒</b>Compra segura</div><div><b>💬</b>Atendimento no WhatsApp</div><div><b>🏍️</b>Entrega por moto na região</div>
 </div></div>
 
+<div id="blocos"></div>
+
 <section id="destaques"><div class="wrap">
- <h2 class="sec-t rv">Destaques</h2><p class="sec-s rv">As peças mais pedidas da Dominnion.</p>
+ <h2 class="sec-t rv" data-t="destaques_t">Destaques</h2><p class="sec-s rv" data-t="destaques_s">As peças mais pedidas da Dominnion.</p>
  <div class="car-w"><button class="arr p" data-act="prev" aria-label="Anterior">‹</button><div class="car" id="car" tabindex="0" aria-label="Produtos em destaque"></div><button class="arr n" data-act="next" aria-label="Próximo">›</button></div>
 </div></section>
 
 <div id="vitExtra"></div>
 
 <section id="vitrine"><div class="wrap">
- <h2 class="sec-t rv">Escolha seu estilo</h2><p class="sec-s rv">Filtre por categoria, modelo, cor, aba, disponibilidade e preço.</p>
+ <h2 class="sec-t rv" data-t="vitrine_t">Escolha seu estilo</h2><p class="sec-s rv" data-t="vitrine_s">Filtre por categoria, modelo, cor, aba, disponibilidade e preço.</p>
  <div class="filters" id="fl-cat" role="group" aria-label="Categoria"></div>
  <div class="filters" id="fl-line" role="group" aria-label="Modelo"></div>
  <div class="filters" id="fl-color" role="group" aria-label="Cor"></div>
@@ -224,42 +226,42 @@ footer .links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin
 </div></section>
 
 <section id="polo"><div class="wrap">
- <h2 class="sec-t rv">Polo Ralph Lauren</h2><p class="sec-s rv">Bordados clássicos em tons neutros, para um visual discreto e refinado.</p>
+ <h2 class="sec-t rv" data-t="polo_t">Polo Ralph Lauren</h2><p class="sec-s rv" data-t="polo_s">Bordados clássicos em tons neutros, para um visual discreto e refinado.</p>
  <div class="grid" id="g-polo"></div>
 </div></section>
 
 <section id="senna"><div class="wrap">
- <h2 class="sec-t rv">Nacional Ayrton Senna</h2><p class="sec-s rv">A identidade do Nacional em bonés de acabamento limpo e aba curva.</p>
+ <h2 class="sec-t rv" data-t="senna_t">Nacional Ayrton Senna</h2><p class="sec-s rv" data-t="senna_s">A identidade do Nacional em bonés de acabamento limpo e aba curva.</p>
  <div class="grid" id="g-senna"></div>
 </div></section>
 
 <section id="como"><div class="wrap">
- <h2 class="sec-t rv">Como comprar</h2><p class="sec-s rv">Em poucos toques você fala com a gente.</p>
- <div class="steps rv"><div><b>1. Escolha</b>Veja os bonés e abra os detalhes.</div><div><b>2. Monte a sacola</b>Adicione as peças e ajuste as quantidades.</div><div><b>3. Finalize no WhatsApp</b>Enviamos seu pedido pronto e combinamos entrega e pagamento.</div></div>
+ <h2 class="sec-t rv" data-t="como_t">Como comprar</h2><p class="sec-s rv" data-t="como_s">Em poucos toques você fala com a gente.</p>
+ <div class="steps rv" id="steps"><div><b>1. Escolha</b>Veja os bonés e abra os detalhes.</div><div><b>2. Monte a sacola</b>Adicione as peças e ajuste as quantidades.</div><div><b>3. Finalize no WhatsApp</b>Enviamos seu pedido pronto e combinamos entrega e pagamento.</div></div>
 </div></section>
 
 <section id="clientes"><div class="wrap">
- <h2 class="sec-t rv">Feedbacks de clientes</h2><p class="sec-s rv">Veja quem já comprou.</p>
+ <h2 class="sec-t rv" data-t="feed_t">Feedbacks de clientes</h2><p class="sec-s rv" data-t="feed_s">Veja quem já comprou.</p>
  <!-- EDITE: troque por prints reais (img/feedback-1.jpg ... feedback-4.jpg) -->
  <div class="fb" id="fb"></div>
  <div style="text-align:center"><a class="btn ghost" id="ig-hl" target="_blank" rel="noopener">Ver destaques no Instagram</a></div>
 </div></section>
 
 <section id="faq"><div class="wrap" style="max-width:720px">
- <h2 class="sec-t rv">Perguntas frequentes</h2><br>
+ <h2 class="sec-t rv" data-t="faq_t">Perguntas frequentes</h2><br>
  <div class="faq" id="faqL"></div>
 </div></section>
 
-<section class="cta"><div class="wrap">
- <h2 class="sec-t">Entre no grupo de ofertas</h2><p class="sec-s" style="margin-bottom:0">Receba lançamentos e promoções primeiro.</p>
- <div class="row"><a class="btn pri" id="grp" target="_blank" rel="noopener">Entrar no grupo de ofertas</a><a class="btn ghost" id="ig-cta" target="_blank" rel="noopener">Siga @_dominnion</a></div>
+<section class="cta" id="cta"><div class="wrap">
+ <h2 class="sec-t" data-t="cta_t">Entre no grupo de ofertas</h2><p class="sec-s" style="margin-bottom:0" data-t="cta_s">Receba lançamentos e promoções primeiro.</p>
+ <div class="row"><a class="btn pri" id="grp" target="_blank" rel="noopener" data-t="cta_btn_grupo">Entrar no grupo de ofertas</a><a class="btn ghost" id="ig-cta" target="_blank" rel="noopener" data-t="cta_btn_ig">Siga @_dominnion</a></div>
 </div></section>
 </main>
 
 <footer><div class="wrap">
  <div class="logo" style="font-size:20px;color:var(--ink)">Dominnion</div>
  <div class="links"><a href="#vitrine">Bonés</a><a href="#como">Como comprar</a><a href="#faq">Dúvidas</a><a id="ig-f" target="_blank" rel="noopener">Instagram</a><a id="wa-f2" target="_blank" rel="noopener">WhatsApp</a><a href="/admin.html" rel="nofollow">Área do lojista</a></div>
- <p style="font-family:Cormorant Garamond,serif;font-size:18px;color:var(--sand);margin-bottom:6px">DOMINNION — ESTILO, PERSONALIDADE E AUTENTICIDADE.</p><p>© 2026 Dominnion — Todos os direitos reservados</p>
+ <p style="font-family:Cormorant Garamond,serif;font-size:18px;color:var(--sand);margin-bottom:6px" data-t="rodape_frase">DOMINNION — ESTILO, PERSONALIDADE E AUTENTICIDADE.</p><p>© 2026 Dominnion — Todos os direitos reservados</p>
 </div></footer>
 
 <a class="wa-f" id="wa-fl" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 19z"/></svg></a>
@@ -324,15 +326,15 @@ const CONFIG = {
      Para nova cor: copie um bloco, troque id/nome/cor/imagens. Fotos na pasta img/ */
   produtos: [
     {id:"polo-bege-terno", nome:"Boné Polo bege urso de terno", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
-     imagens:["img/polo-bege-terno-1.jpg","img/polo-bege-terno-2.jpg","img/polo-bege-terno-3.jpg"], precoDe:78, descricao:"Bege com o urso de terno em destaque.", estoque:8, destaque:true},
+     imagens:["img/polo-bege-terno-1.jpg","img/polo-bege-terno-2.jpg","img/polo-bege-terno-3.jpg"], precoDe:78, descricao:"Bege com o urso de terno em destaque.", estoque:10, destaque:true},
     {id:"polo-bege-golfista", nome:"Boné Polo bege urso golfista", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
-     imagens:["img/polo-bege-golfista-1.jpg","img/polo-bege-golfista-2.jpg","img/polo-bege-golfista-3.jpg"], precoDe:78, descricao:"Bege com o urso golfista bordado.", estoque:2, destaque:true},
+     imagens:["img/polo-bege-golfista-1.jpg","img/polo-bege-golfista-2.jpg","img/polo-bege-golfista-3.jpg"], precoDe:78, descricao:"Bege com o urso golfista bordado.", estoque:10, destaque:true},
     {id:"polo-bege-bordado", nome:"Boné Polo bege bordado preto", linha:"Polo Ralph Lauren", cor:"Bege", preco:65,
      imagens:["img/polo-bege-bordado-1.jpg","img/polo-bege-bordado-2.jpg","img/polo-bege-bordado-3.jpg"], precoDe:78, descricao:"Bege com bordado preto, discreto e versátil.", estoque:10, destaque:false},
     {id:"nacional-azul", nome:"Boné Nacional Ayrton Senna azul", linha:"Nacional Ayrton Senna", cor:"Azul", preco:65,
-     imagens:["img/nacional-azul-1.jpg","img/nacional-azul-2.jpg","img/nacional-azul-3.jpg"], precoDe:78, descricao:"Azul com a identidade Nacional.", estoque:9, destaque:true},
+     imagens:["img/nacional-azul-1.jpg","img/nacional-azul-2.jpg","img/nacional-azul-3.jpg"], precoDe:78, descricao:"Azul com a identidade Nacional.", estoque:10, destaque:true},
     {id:"nacional-preto", nome:"Boné Nacional Ayrton Senna preto", linha:"Nacional Ayrton Senna", cor:"Preto", preco:65,
-     imagens:["img/nacional-preto-1.jpg","img/nacional-preto-2.jpg","img/nacional-preto-3.jpg"], precoDe:78, descricao:"Preto com a identidade Nacional.", estoque:3, destaque:false}
+     imagens:["img/nacional-preto-1.jpg","img/nacional-preto-2.jpg","img/nacional-preto-3.jpg"], precoDe:78, descricao:"Preto com a identidade Nacional.", estoque:10, destaque:false}
   ],
   faq: [
     ["Qual o prazo de envio?","Após a confirmação do pedido, postamos em poucos dias úteis. O prazo de entrega depende da sua cidade e é informado no atendimento."],
@@ -395,18 +397,19 @@ function renderGrid(){
 }
 function renderFav(){$('#favc').textContent=S.fav.length;$('#favc').hidden=!S.fav.length}
 function renderStatic(){
+  aplicaSite();
   $('#catsNav').innerHTML='<a href="#topo">Início</a>'+CONFIG.categorias.map(c=>`<button data-act="f" data-k="cat" data-v="${esc(c)}">${esc(c)}</button>`).join('')+'<button data-act="sp" data-v="novo">Novidades</button><button data-act="sp" data-v="oferta">Ofertas</button>';
   $('#menuL').innerHTML=CONFIG.categorias.map(c=>`<a href="#vitrine" data-act="f" data-k="cat" data-v="${esc(c)}">${esc(c)}</a>`).join('');
   $('#vitExtra').innerHTML=[["MAIS VENDIDO","Mais vendidos"],["NOVO","Novidades"],["OFERTA","Ofertas especiais"]].map(([b,ti])=>{const l=P.filter(p=>p.badge===b||(b==="OFERTA"&&p.precoPromo));return l.length?`<section><div class="wrap"><h2 class="sec-t">${ti}</h2><br><div class="grid">${l.map(card).join('')}</div></div></section>`:''}).join('');
   $('#car').innerHTML=P.filter(p=>p.destaque).map(card).join('');
   $('#g-polo').innerHTML=P.filter(p=>p.linha==="Polo Ralph Lauren").map(card).join('');
   $('#g-senna').innerHTML=P.filter(p=>p.linha==="Nacional Ayrton Senna").map(card).join('');
-  $('#faqL').innerHTML=CONFIG.faq.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('');
-  $('#fb').innerHTML=[1,2,3,4].map(i=>`<div class="ph">${img('img/feedback-'+i+'.jpg','Feedback de cliente '+i)}</div>`).join('');
+  $('#faqL').innerHTML=((SITE.faq&&SITE.faq.length)?SITE.faq.map(x=>[x.q,x.a]):CONFIG.faq).map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('');
+  $('#fb').innerHTML=((SITE.feedbacks&&SITE.feedbacks.length)?SITE.feedbacks:[1,2,3,4].map(i=>'img/feedback-'+i+'.jpg')).map((u,i)=>`<div class="ph">${img(u,'Feedback de cliente '+(i+1))}</div>`).join('');
   const w=wa(CONFIG.mensagemInicialWhats);
   ['#wa-f2','#wa-fl'].forEach(s=>$(s).href=w);
   ['#ig-hl','#ig-cta','#ig-f'].forEach(s=>$(s).href=CONFIG.instagram);
-  if(/COLE_AQUI/.test(CONFIG.grupoOfertas)||!CONFIG.grupoOfertas)$('#grp').hidden=true; else $('#grp').href=CONFIG.grupoOfertas;
+  const gOk=!(/COLE_AQUI/.test(CONFIG.grupoOfertas)||!CONFIG.grupoOfertas);$('#grp').hidden=!gOk;if(gOk)$('#grp').href=CONFIG.grupoOfertas;
   $('#cEnt').innerHTML=Object.values(CONFIG.entrega).map(v=>`<option>${esc(v)}</option>`).join('');
   $('#cupBox').hidden=!Object.keys(CONFIG.cupons||{}).length;
   const ld=P.map(p=>({"@context":"https://schema.org","@type":"Product",name:p.nome,description:p.descricao,brand:{"@type":"Brand",name:p.linha},color:p.cor,image:p.imagens,
@@ -436,8 +439,10 @@ function renderCart(){setTimeout(autoFrete,0);
 }
 function add(id,q=1,open=true){
   const p=find(id); if(!p||p.estoque<1)return;
-  const it=S.cart.find(i=>i.id===id); it?it.q=Math.min(it.q+q,99):S.cart.push({id,q});
-  save();renderCart();toast('Produto adicionado');
+  const it=S.cart.find(i=>i.id===id),atual=it?it.q:0,novo=Math.min(atual+q,p.estoque,99);
+  if(novo<=atual){toast('Só temos '+p.estoque+(p.estoque==1?' unidade':' unidades')+' em estoque');if(open)openCart();return}
+  it?it.q=novo:S.cart.push({id,q:novo});
+  save();renderCart();toast(novo<atual+q?'Adicionamos o máximo em estoque ('+p.estoque+')':'Produto adicionado');
   const b=$('#cnt');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
   if(open)openCart();
 }
@@ -529,10 +534,10 @@ document.addEventListener('click',e=>{
   else if(a==='addq'){add(id,mqv());$('#mProd').classList.remove('on')}
   else if(a==='open')openProd(id);
   else if(a==='buy'){const q=mqv();window.open(wa(`Oi, tudo bem? Vim do site da Dominnion e quero comprar:\n${lines([{id,q}])}\nTotal: ${brl(pv(find(id))*q)}`),'_blank','noopener')}
-  else if(a==='mq'){$('#mq').textContent=Math.max(1,Math.min(99,mqv()+ +b.dataset.d));previewFrete()}
+  else if(a==='mq'){const mx=Math.max(1,Math.min(99,(find(CUR)||{estoque:99}).estoque));$('#mq').textContent=Math.max(1,Math.min(mx,mqv()+ +b.dataset.d));previewFrete()}
   else if(a==='thumb'){const m=$('#gm');m.querySelector('img').src=b.dataset.src;$$('.th button').forEach(x=>x.classList.toggle('on',x===b))}
   else if(a==='zoom')b.classList.toggle('z');
-  else if(a==='inc'||a==='dec'){const it=S.cart.find(i=>i.id===id);it.q+=a==='inc'?1:-1;if(it.q<1)S.cart=S.cart.filter(i=>i!==it);save();renderCart()}
+  else if(a==='inc'||a==='dec'){const it=S.cart.find(i=>i.id===id),p=find(id);if(a==='inc'&&p&&it.q>=p.estoque){toast('Só temos '+p.estoque+(p.estoque==1?' unidade':' unidades')+' em estoque');return}it.q+=a==='inc'?1:-1;if(it.q<1)S.cart=S.cart.filter(i=>i!==it);save();renderCart()}
   else if(a==='rm'){S.cart=S.cart.filter(i=>i.id!==id);save();renderCart()}
   else if(a==='cart')openCart();
   else if(a==='closeAll')closeAll();
@@ -570,17 +575,38 @@ $('#cep').addEventListener('input',e=>{e.target.value=mask(e.target.value);const
 const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15}):null;
 $$('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
 /* Lê os produtos do painel (admin.html) e confere a cada 15 s se mudou. Sem resposta: usa a lista do CONFIG. */
-let catJSON='',CFG={pagamento:false,frete:false};
+let catJSON='',SITE={},CFG={pagamento:false,frete:false};
+const CFG0={whatsapp:CONFIG.whatsapp,mensagemInicialWhats:CONFIG.mensagemInicialWhats,instagram:CONFIG.instagram,grupoOfertas:CONFIG.grupoOfertas};
+/* Aplica os textos, fotos, links, cores e blocos que você editou no painel (aba Página). Campo vazio = texto original. */
+function aplicaSite(){
+  const s=SITE||{},R=document.documentElement.style;
+  $$('[data-t]').forEach(el=>{if(el.dataset.d===undefined)el.dataset.d=el.textContent;el.textContent=s[el.dataset.t]||el.dataset.d});
+  CONFIG.whatsapp=s.whatsapp||CFG0.whatsapp;CONFIG.mensagemInicialWhats=s.whatsapp_msg||CFG0.mensagemInicialWhats;
+  CONFIG.instagram=s.instagram||CFG0.instagram;CONFIG.grupoOfertas=s.grupo||CFG0.grupoOfertas;
+  s.cor_destaque?R.setProperty('--sand',s.cor_destaque):R.removeProperty('--sand');
+  s.cor_fundo?R.setProperty('--bg',s.cor_fundo):R.removeProperty('--bg');
+  const bd=$('.band');bd.style.backgroundImage=s.hero_imagem?`linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url("${s.hero_imagem}")`:'';bd.style.backgroundSize='cover';bd.style.backgroundPosition='center';
+  const sec={destaques:'destaques',vitrine:'vitrine',polo:'polo',senna:'senna',como:'como',feed:'clientes',faq:'faq',cta:'cta'};
+  for(const k in sec)$('#'+sec[k]).hidden=!!(s.secoes&&s.secoes[k]===false);
+  const lst=(id,arr,html)=>{const el=$(id);if(el.dataset.d===undefined)el.dataset.d=el.innerHTML;el.innerHTML=arr&&arr.length?arr.map(html).join(''):el.dataset.d};
+  lst('#steps',s.passos,x=>`<div><b>${esc(x.t)}</b>${esc(x.s)}</div>`);
+  lst('#selos',s.selos,x=>`<div><b>${esc(x.i)}</b>${esc(x.t)}</div>`);
+  $('#blocos').innerHTML=(s.blocos||[]).map(b=>`<section><div class="wrap" style="max-width:760px;text-align:center">${b.img?`<img src="${esc(b.img)}" alt="" loading="lazy" style="margin:0 auto 16px;border-radius:14px;border:1px solid var(--line);max-height:420px;object-fit:cover">`:''}${b.t?`<h2 class="sec-t">${esc(b.t)}</h2>`:''}${b.s?`<p style="color:var(--mut);white-space:pre-line;margin-bottom:18px">${esc(b.s)}</p>`:''}${b.btn&&b.link?`<a class="btn pri" href="${esc(b.link)}" ${b.link[0]=='#'?'':'target="_blank" rel="noopener"'}>${esc(b.btn)}</a>`:''}</div></section>`).join('');
+}
+function ajustaSacola(){const antes=JSON.stringify(S.cart);   // a sacola nunca passa do estoque
+  S.cart=S.cart.map(i=>{const p=find(i.id);return p?{...i,q:Math.min(i.q,p.estoque)}:null}).filter(i=>i&&i.q>=1);
+  save();if(JSON.stringify(S.cart)!==antes)setTimeout(()=>toast('Ajustamos a sacola ao estoque disponível'),300)}
 async function lerCatalogo(){try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),4000);
   const r=await fetch('/.netlify/functions/produtos?_='+Date.now(),{signal:c.signal,cache:'no-store'});clearTimeout(tm);if(!r.ok)return false;
-  const d=await r.json();if(!Array.isArray(d.produtos))return false;const j=JSON.stringify(d.produtos);if(j===catJSON)return false;
-  catJSON=j;P.splice(0,P.length,...d.produtos);norm();S.cart=S.cart.filter(i=>find(i.id));save();return true}catch(e){return false}}
+  const d=await r.json();if(!Array.isArray(d.produtos))return false;const j=JSON.stringify([d.produtos,d.site||{}]);if(j===catJSON)return false;
+  catJSON=j;SITE=d.site||{};P.splice(0,P.length,...d.produtos);norm();ajustaSacola();return true}catch(e){return false}}
 async function lerConfig(){try{const r=await fetch('/.netlify/functions/config',{cache:'no-store'});if(r.ok)CFG=await r.json()}catch(e){}}
 const aplicaCfg=()=>{$('#frBox').hidden=!CFG.frete};
-async function sincronizar(){if(document.hidden)return;if($('#mProd').classList.contains('on')||$('#mChk').classList.contains('on'))return;
+async function sincronizar(f){if(document.hidden&&!f)return;if($('#mProd').classList.contains('on')||$('#mChk').classList.contains('on'))return;
   if(await lerCatalogo()){renderStatic();renderGrid();renderCart()}}
 (async()=>{await Promise.all([lerCatalogo(),lerConfig()]);aplicaCfg();$('#cep').value=mask(S.cep||'');renderStatic();renderGrid();renderCart();renderFav();retorno();
-  setInterval(sincronizar,15000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)sincronizar()})})();
+  setInterval(sincronizar,15000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)sincronizar()});
+  try{new BroadcastChannel('dominnion').onmessage=()=>setTimeout(()=>sincronizar(true),1200)}catch(e){}})();
 </script>
 </body>
 </html>

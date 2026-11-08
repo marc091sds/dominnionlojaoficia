@@ -1,6 +1,6 @@
 // Recebe o aviso do Mercado Pago, valida, confere o pagamento na API, guarda o pedido e baixa o estoque.
 const crypto = require('crypto');
-const { st, lerProdutos, salvarProdutos } = require('./_lib');
+const { st, baixarEstoque } = require('./_lib');
 exports.handler = async e => {
   const q = e.queryStringParameters || {}; let b = {}; try { b = JSON.parse(e.body || '{}'); } catch (x) {}
   const id = String(q['data.id'] || (b.data && b.data.id) || ''), tipo = q.type || b.type || q.topic;
@@ -21,9 +21,7 @@ exports.handler = async e => {
       const o = (await ped.get(ref, { type: 'json' })) || { ref, criado: new Date().toISOString(), enviado: false, rastreio: '', baixado: false };
       Object.assign(o, { status: p.status, valor: p.transaction_amount, metodo: p.payment_method_id, pagamento: p.id, cliente: m.cliente, frete: m.frete, cep: m.cep, itens: m.itens || [], cupom: m.cupom || null });
       if (p.status === 'approved' && !o.baixado) {   // baixa o estoque uma única vez
-        const l = await lerProdutos(e);
-        for (const it of o.itens) { const x = l.find(y => y.id === it.id); if (x) x.estoque = Math.max(0, (+x.estoque || 0) - (+it.q || 0)); }
-        await salvarProdutos(e, l); o.baixado = true;
+        await baixarEstoque(e, o.itens); o.baixado = true;
       }
       await ped.setJSON(ref, o);
     } catch (err) { console.error('pedido', err.message); return { statusCode: 500, body: 'erro ao salvar' }; }
